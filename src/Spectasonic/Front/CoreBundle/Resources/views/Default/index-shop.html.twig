@@ -1,0 +1,41 @@
+{% for product in listProducts %}
+    <div class="element clearfix rectangle col1-1 home teaser">
+        <div class="padding-wrapper">
+            <a href="{{ path('spectasonic_front_shop_view_product', {'category': product.category.slug, 'slug': product.slug}) }}" title="{{ product.name }}">
+                <figure class="images">
+                    {% if product.mainimage is defined %}
+                        <img
+                            src="{{ asset(product.mainimage) }}"
+                            alt=""
+                            />
+                    {% endif %}
+                </figure>
+            </a>
+            <div class="grey-bg">
+                <p class="small">
+                    <a href="{{ path('spectasonic_front_shop_view_all_posts', {'category': product.category.slug, 'slug': product.slug}) }}" title="{{ product.name}}">{{ product.category.name }}</a>
+                </p>
+                <a href="{{ path('spectasonic_front_shop_view_product', {'category': product.category.slug , 'slug': product.slug}) }}" title="{{ product.name }}">
+                    <h4 class="header">{{ product.name }}</h4>
+                </a>
+                <a href="#" title="By Spectasonic Product">
+                    <p>by Spectasonic Product</p>
+                </a>
+                <div class="stats">
+                    <p class="lefted">
+                        <span class="alignright">
+                            <span class="padding">
+                                <i class="fa fa-heart"></i>96
+                            </span>
+                            <a href="#" title="">
+                                <i class="fa fa-comments"></i>3
+                            </a>
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <p>No product available</p>
+{% endfor %}

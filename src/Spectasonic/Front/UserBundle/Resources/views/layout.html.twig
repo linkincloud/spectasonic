@@ -1,0 +1,20 @@
+{# src\Spectasonic\Front\UserBundle\Resources\views\layout.html.twig #}
+
+{% extends "SpectasonicFrontCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    {% block second_title %}{% endblock %} - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    <div class="logo_container">
+        <h1 id="logo"><a href="{{ path('spectasonic_front_core_homepage') }}">Spectasonic</a></h1>
+    </div>
+    <div class="container">
+        <div class="clear"></div>
+        <div id="container" class="clearfix">
+            {% block fos_user_content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends "SpectasonicBackBlogBundle::layout.html.twig" %}
+
+
+{% block title %}
+    {{ 'blog.slider.show.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block blog_content %}
+
+<header class="panel-heading">
+    <h2> Slider</h2>
+</header>
+<div class="panel-body">
+    <form class="form form-vertical">
+        <fieldset>            <div class="control-group">
+                <label class="col-sm-2 control-label">Id</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ slider.id }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ slider.name }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ slider.description }}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Createdat</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{% if slider.createdAt %}{{ slider.createdAt|date('Y-m-d H:i:s') }}{% endif %}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Updatedat</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{% if slider.updatedAt %}{{ slider.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</span>
+                </div>
+            </div>            <div class="control-group">
+                <label class="col-sm-2 control-label">Slug</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ slider.slug }}</span>
+                </div>
+            </div>        </fieldset>
+    </form>
+        <hr>
+        <div class="form-group">
+    <a class="btn btn-default" href="{{ path('spectasonic_back_blog_sliders') }}">
+        <i class="fa fa-list" aria-hidden="true"></i>
+        Back to list
+    </a>
+            <a class="btn btn-success" href="{{ path('spectasonic_back_blog_sliders_edit', { 'id':  slider.id }) }}">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            Edit
+        </a>
+                <a class="btn btn-primary" href="{{ path('spectasonic_back_blog_sliders_new') }}">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            New
+        </a>
+                <form action="{{ path('spectasonic_back_blog_sliders_delete', { 'id': slider.id }) }}" method="post" style="display: inline-block">
+            <input type="hidden" name="_method" value="DELETE" />
+            {{ form_widget(delete_form) }}
+            <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                <i class="fa fa-trash-o"></i> 
+                Delete</button>
+        </form>
+    </div>
+
+</div>
+<hr>
+
+{% endblock %}
+

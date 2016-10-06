@@ -1,0 +1,4 @@
+services:
+#    spectasonic_back_support.example:
+#        class: Spectasonic\Back\SupportBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,0 +1,57 @@
+{% extends "SpectasonicBackGestionContactBundle::layout.html.twig" %}
+
+{% block second_title %}
+    {{ 'contact.index.title_page' | trans }} {{ parent() }}    
+{% endblock %}
+
+{% block contact_content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'contact.index.title' | trans }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Email</th>
+                                <th>Titre du message</th>
+                                <th>Message</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for contact in listContacts %}
+                                    <td>{{ contact.name }}</td>
+                                    <td>{{ contact.firstname }}</td>
+                                    <td>{{ contact.email }}</td>
+                                    <td>{{ contact.title }}</td>
+                                    <td>{{ contact.message }}</td>
+                                    <td>{{ contact.date | date('H:m - d/m/y') }}</td>
+                                    <td>
+                                        <a href="{{ path('spectasonic_back_gestion_contact_view', {'id': contact.id}) }}" type="button" class="btn btn-success"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="{{ path('spectasonic_back_gestion_contact_delete', {'id': contact.id}) }}" type="button" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+            <!-- /.col-lg-4 (nested) -->
+
+            <!-- /.col-lg-8 (nested) -->
+        </div>
+        <!-- /.row -->
+    </div>
+
+{% endblock %}

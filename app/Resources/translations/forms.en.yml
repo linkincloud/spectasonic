@@ -1,0 +1,19 @@
+profile:
+    fields:
+        gender: Civility
+        username: Pseudo
+        firstname: Firstname
+        lastname: Lastname
+        address: Address
+        city: City
+        country: Country
+        zip_code: ZIP
+        phone: Phone
+        email: Email
+        password_first: Password
+        password_second: Password (validation)
+        roles: Roles
+
+register:
+    fields:
+        firstname: Firstname

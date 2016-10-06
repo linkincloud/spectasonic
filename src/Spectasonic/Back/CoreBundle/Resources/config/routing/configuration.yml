@@ -1,0 +1,41 @@
+spectasonic_back_configuration_homepage_slider:
+    path:  /homepage/slider
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:index" }
+
+spectasonic_back_configuration_homepage_slider_show:
+    path:  /homepage/slider/{id}/show
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:show" }
+
+spectasonic_back_configuration_homepage_slider_new:
+    path:  /homepage/slider/new
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:new" }
+
+spectasonic_back_configuration_homepage_slider_create:
+    path:  /homepage/slider/create
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:create" }
+    requirements: { _method: post }
+
+spectasonic_back_configuration_homepage_slider_edit:
+    path:  /homepage/slider/{id}/edit
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:edit" }
+
+spectasonic_back_configuration_homepage_slider_update:
+    path:  /homepage/slider/{id}/update
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:update" }
+    requirements: { _method: post|put }
+
+spectasonic_back_configuration_homepage_slider_delete:
+    path:  /homepage/slider/{id}/delete
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:delete" }
+    requirements: { _method: post|delete }
+    
+spectasonic_back_configuration_homepage_slider_by_id_delete:
+    path:  /homepage/slider/delete/{id}
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:deleteById" }
+    requirements: { _method: get }
+
+spectasonic_back_configuration_homepage_slider_bulk_action:
+    path:  /homepage/slider/bulk-action
+    defaults: { _controller: "SpectasonicBackCoreBundle:Slider:bulk" }
+    requirements: { _method: post }
+    

@@ -1,0 +1,4 @@
+services:
+#    spectasonic_back_user_manager.example:
+#        class: Spectasonic\Back\UserManagerBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

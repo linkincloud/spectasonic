@@ -1,0 +1,64 @@
+{% extends "SpectasonicBackShopManagerBundle::layout.html.twig" %}
+
+
+{% block title %}
+    {{ 'user_contract.show.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block shop_content %}
+
+    <header class="panel-heading">
+        <h2> Ref User contract : {{ user_contract.contract.reference }} - User : <a href="{{ path('spectasonic_back_user_manager_view', {'id': user_contract.user.id}) }}">{{ user_contract.user.username }}</a></h2>
+    </header>
+    <div class="panel-body">
+        <form>
+            <div class="control-group">
+                <label class="control-label">Id :</label>
+                <span class="input-xlarge uneditable-input">{{ user_contract.id }}</span>
+            </div>  
+            <div class="control-group">
+                <label class="control-label">Quantity :</label>
+                <span class="input-xlarge uneditable-input">{{ user_contract.quantity }}</span>
+            </div> 
+            <div class="control-group">
+                <label class="control-label">Product :</label>
+                <span class="input-xlarge uneditable-input">{{ user_contract.product.name }} - Product Reference : <a href="{{ path('spectasonic_back_shop_manager_show_product', {'id': user_contract.product.id}) }}"> {{ user_contract.product.reference }}</a></span>
+            </div> 
+            <div class="control-group">
+                <label class="control-label">Created :</label>
+                <span class="input-xlarge uneditable-input">{% if user_contract.created %}{{ user_contract.created|date('Y-m-d H:i:s') }}{% endif %}</span>
+            </div> 
+            <div class="control-group">
+                <label class="control-label">Updated :</label>
+                <span class="input-xlarge uneditable-input">{% if user_contract.updated %}{{ user_contract.updated|date('Y-m-d H:i:s') }}{% endif %}</span>
+            </div>      
+   
+        </form>
+        <hr>
+        <div class="form-group">
+            <a class="btn btn-default" href="{{ path('spectasonic_back_shop_manager_list_user_contract') }}">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Back to list
+            </a>
+            <a class="btn btn-success" href="{{ path('spectasonic_back_shop_manager_edit_user_contract', { 'id':  user_contract.id }) }}">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Edit
+            </a>
+            <a class="btn btn-primary" href="{{ path('spectasonic_back_shop_manager_new_user_contract') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                New
+            </a>
+            <form action="{{ path('spectasonic_back_shop_manager_delete_user_contract', { 'id': user_contract.id }) }}" method="post" style="display: inline-block">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                    <i class="fa fa-trash-o"></i> 
+                    Delete</button>
+            </form>
+        </div>
+
+    </div>
+    <hr>
+
+{% endblock %}
+

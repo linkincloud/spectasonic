@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Front/CoreBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Form/ShopCategoryType.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Front/CoreBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Entity/ShopCategory.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Resources/views/Slider/show.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/app/Resources/views/shopcategory/edit.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Resources/views/Category/edit.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Resources/views/Category/add.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Form/BlogCategoryType.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Front/CoreBundle/Resources/translations/messages.en.yml</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Repository/ContractRepository.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Resources/views/Category/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Resources/views/Category/show.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Front/CoreBundle/Resources/views/Default/index-header.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Front/ShopBundle/Resources/views/Default/view_post.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/app/Resources/views/shopcategory/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/CoreBundle/Resources/views/Slider/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Resources/views/Product/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/CoreBundle/Resources/views/layout.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Front/ShopBundle/Resources/views/Default/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Entity/Medias.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/app/Resources/views/shopcategory/show.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Form/ContractType.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Form/BlogType.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Resources/views/Blog/show.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Entity/Blog.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Front/CoreBundle/Resources/views/Default/index-shop.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/CoreBundle/Resources/views/layout-login.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Entity/ShopProduct.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Entity/BlogCategory.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/app/config/config.yml</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/app/Resources/views/shopcategory/new.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Resources/views/Category/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Form/SliderType.php</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/ShopManagerBundle/Resources/back/views/Order/index.html.twig</file>
+            <file>file:/C:/wamp/www/IPFORMATION/www.spectasonic.com_v1/src/Spectasonic/Back/BlogBundle/Form/MediasType.php</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,5 @@
+spectasonic_back_configuration_homepage:
+    path:  /homepage
+    defaults: { _controller: "SpectasonicBackCoreBundle:Homepage:edit" }
+
+

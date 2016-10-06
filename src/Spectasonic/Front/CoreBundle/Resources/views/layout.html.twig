@@ -1,0 +1,157 @@
+{# src\Spectasonic\Front\CoreBundle\Resources\views\layout.html.twig #}
+{% trans_default_domain 'FOSUserBundle' %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="robots" content="noindex,nofollow">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="author" content="Link">
+        <meta name="Description" content="Spectasonic - The perfect sound" />
+        <title>{% block title %}Spectasonic{% endblock %}</title>
+
+        {% block stylesheets %}
+            {% stylesheets
+                'css/reset.css' 
+                'css/bootstrap.min.css' 
+                'css/contact.css' 
+                'css/styles.css' 
+                'css/flexslider.css' 
+                'css/jquery.fancybox.css' 
+                'css/responsive.css' 
+                'css/magnific-popup.css' 
+                filter='cssrewrite' %}
+            <link rel="stylesheet" href="{{ asset_url }}"/>
+            {% endstylesheets %}
+        {% endblock %}
+
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/bmatznerfontawesome/css/font-awesome.min.css') }}" />
+
+        <link href="http://fonts.googleapis.com/css?family=Oswald:400,600,700" rel="stylesheet" type="text/css" />
+        <link href="http://fonts.googleapis.com/css?family=Lato:400,400italic,600" rel="stylesheet" type="text/css" />
+
+        {% javascripts 'js_before/*' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="background-color"></div>
+            <header id="header" class="clearfix">
+                <ul class="social-list clearfix alignleft">
+                    <li> <a href="#"><i class="fa fa-facebook"></i></a> </li>
+                    <li> <a href="#"><i class="fa fa-twitter"></i></a> </li>
+                    <li> <a href="#"><i class="fa fa-instagram"></i></a> </li>
+                    <li> <a href="#"><i class="fa fa-behance"></i></a> </li>
+                </ul>
+                <div id="menu-button">
+                    <div class="cursor">Menu
+                        <div id="nav-button"> <span class="nav-bar"></span> <span class="nav-bar"></span> <span class="nav-bar"></span> </div>
+                    </div>
+                </div>
+            </header>
+            <!-- end header --> 
+
+            <!-- start logo header -->
+            <<!--<div id="logo-header" class="clearfix">-->
+
+        </div>
+        <!-- end logo header -->
+
+        <!-- start main nav -->
+        <nav id="main-nav">
+            <ul id="options" class="option-set clearfix" data-option-key="filter">
+                <li> <a href="{{ path('spectasonic_front_core_homepage') }}">Home</a> </li>
+                <li> <a href="{{ path('spectasonic_front_news_homepage') }}">Blog</a> </li>
+                <li> <a href="#" class="sub-nav-toggle">Nos produits</a>
+                    <ul class="sub-nav hidden">
+                        <li> <a href="{{ path('spectasonic_front_shop_homepage') }}">Tous nos produits</a> </li>
+                        <li> <a href="{{ path('spectasonic_front_shop_view_by_category', {'category': 'amplificateurs' } ) }}.html" title="See All Amplificators">Nos amplificateurs</a> </li>
+                        <li> <a href="{{ path('spectasonic_front_shop_view_by_category', {'category': 'enceintes' } ) }}.html" title="See All HP">Nos enceintes</a> </li>
+                        <li> <a href="{{ path('spectasonic_front_shop_view_by_category', {'category': 'cables' } ) }}.html" title="See All HP">Nos câbles</a> </li>
+                       
+                    </ul>
+                </li>
+                <li> <a href="#" class="sub-nav-toggle">{% trans %}core.layout.services{% endtrans %}</a>
+                    <ul class="sub-nav hidden">
+                        {{ render(controller("SpectasonicFrontNewsBundle:Default:menuservices")) }}
+                    </ul>
+                </li>
+                <li> <a href="#" class="sub-nav-toggle">{% trans %}core.layout.values{% endtrans %}</a> 
+                    <ul class="sub-nav hidden">
+                        {{ render(controller("SpectasonicFrontNewsBundle:Default:menuvalues")) }}
+                    </ul>
+                </li>
+                <li> <a href="{{ path('spectasonic_front_contact_homepage') }}">Contact</a> </li>
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <li> <a href="#" class="sub-nav-toggle">{{ app.user.username }}</a>
+                        <ul class="sub-nav hidden">
+                            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_VENDEUR') %}
+                                <li> <a href="{{ path('spectasonic_back_core_homepage') }}">{% trans %}core.layout.user.admin{% endtrans %}</a> </li>
+                            {% else %}    
+                                <li> <a href="{{ path('fos_user_security_logout') }}">{% trans %}core.layout.user.caddie{% endtrans %}</a> </li>
+                                <li> <a href="{{ path('fos_user_security_logout') }}">{% trans %}core.layout.user.order{% endtrans %}</a> </li>
+                                <li> <a href="{{ path('fos_user_profile_show') }}">{% trans %}core.layout.user.account{% endtrans %}</a> </li>
+                            {% endif  %}
+
+                            <li> <a href="{{ path('fos_user_security_logout') }}">{% trans %}core.layout.user.logout{% endtrans %}</a> </li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <!--<li> <a href="{#{ path('fos_user_security_login') }#}">Login</a> </li>-->
+                    <li> <a href="{{ path('fos_user_security_login') }}">Login</a> </li>
+                    {% endif %}
+
+                <li> <a href="{{ path('spectasonic_front_forum_homepage') }}">Forum</a> </li>
+
+            </ul>
+            <ul class="social-list clearfix">
+                <li> <a href="#"><i class="fa fa-twitter"></i></a> </li>
+                <li> <a href="#"><i class="fa fa-pinterest-p"></i></a> </li>
+                <li> <a href="#"><i class="fa fa-instagram"></i></a> </li>
+                <li> <a href="#"><i class="fa fa-google-plus"></i></a> </li>
+            </ul>
+        </nav>
+        <!-- end main nav -->
+        <div class="content-wrapper">
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+                <!-- end .container --> 
+            </div>
+            <!-- end content --> 
+        </div>
+        <!-- end content-wrapper --> 
+    </div>
+    <!-- end wrap -->
+    <footer id="footer" class="clearfix">
+        <p class="alignleft"><span class="symbol">©</span> 2016, Spectasonic.</p>
+        <p class="alignright">Design &amp; Development by <a href="http://www.link.net" data-title="Agency Web">Link</a>.</p>
+    </footer>
+
+    {% javascripts
+            'js/jquery-1.11.2.min.js'
+            'js/jquery-easing-1.3.js'
+            'js/jquery.touchSwipe.min.js'
+            'js/jquery.isotope2.min.js'
+            'js/jquery.ba-bbq.min.js' 
+            'js/packery-mode.pkgd.min.js' 
+            'js/jquery.isotope.load.js' 
+            'js/main2.js' 
+            'js/jquery.form.js' 
+            'js/input.fields.js' 
+            'js/preloader.js' 
+            'js/jquery.fancybox.pack.js' 
+            'js/bootstrap.min.js'
+            'js/jquery.flexslider-min.js' %}
+    <script src="{{ asset_url }}"></script>
+
+
+    {% endjavascripts %}
+
+    <script src="js/jquery.magnific-popup.min.html"></script>
+
+</body>
+</html>

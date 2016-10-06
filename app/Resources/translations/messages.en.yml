@@ -1,0 +1,29 @@
+core:
+    layout:
+        title:            My platform of IT jobs
+        description:      This project is lauching by Sensio Labs...
+        description_link: Come to our MOOC
+        menu_title:       See all jobs
+        menu_home:        Home
+        menu_add:         Add a now job
+        menu_last_job:    Last jobs
+        footer:           The sky's the limit © %date% and beyond.
+        services:         Our services
+        user:
+            logout:       Logout
+            caddie:       My caddie
+            order:        My orders
+            account:      My account
+    layout_menu:
+        tab_home:         Home
+        tab_jobs:         Jobs
+        tab_contact:      Contact us
+        tab_profil:       Your profil
+        tab_login:        Login
+        tab_logout:       Logout
+    index:
+        title_page:       Home
+        welcome:          Welcome
+        description:      This is a homepage of the training Symfony's OpenClassroom.
+        
+

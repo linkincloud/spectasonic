@@ -1,0 +1,15 @@
+spectasonic_back_gestion_contact_homepage:
+    path:     /contact
+    defaults: { _controller: SpectasonicBackGestionContactBundle:Default:index }
+
+spectasonic_back_gestion_contact_view:
+    path:     /contact/view/{id}
+    defaults: { _controller: SpectasonicBackGestionContactBundle:Default:view }
+    requirements:
+        id: \d+
+
+spectasonic_back_gestion_contact_delete:
+    path:     /contact/delete/{id}
+    defaults: { _controller: SpectasonicBackGestionContactBundle:Default:delete }
+    requirements:
+        id: \d+

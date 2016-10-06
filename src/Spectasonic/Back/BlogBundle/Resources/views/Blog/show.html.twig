@@ -1,0 +1,63 @@
+{% extends "SpectasonicBackBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ 'back.blog.show.title_page' | trans }} {{ parent() }}    
+{% endblock %}
+
+{% block blog_content %}
+    <header class="panel-heading">
+        <h2>Title : {{ blog.title }} - n°id {{ blog.id }}</h2>
+        <p>Slug : {{ blog.slug }}</p>
+    </header>
+    <div class="panel-body">
+        {% if blog.mainimage is defined %}
+            <img src="{{ asset(blog.mainimage) }}" with="50%" height="50%" alt=""/>
+        {% endif %}
+        <ul>
+            <li>Slider :
+                {% if blog.slider != null %}
+                    {{ blog.slider.name }}
+                {% else %}
+                    No slider
+                {% endif %}
+            </li>
+            <li>Date :{% if blog.date %}{{ blog.date|date('Y-m-d H:i:s') }}{% endif %}</li>
+
+            <li>Updated :{% if blog.updatedat %}{{ blog.updatedat|date('Y-m-d H:i:s') }}{% endif %}</li>
+            <li>Author :{{ blog.author }}</li>
+            <li>Display :{% if blog.published %}Yes{% else %}No{% endif %}</p>
+            <li>Page :{% if blog.page %}Page{% else %}Post{% endif %}</li>
+            <li>Nb comments :{{ blog.nbComments }}</li>
+        </ul>
+        <p>Excerpt :<br />{{ blog.excerpt }}</p>
+        <p>Content :<br />{{ blog.content | raw }}</p>
+
+
+        <hr>
+        <div class="form-group">
+            <a class="btn btn-default" href="{{ path('back_blog') }}">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Back to list
+            </a>
+            <a class="btn btn-success" href="{{ path('back_blog_edit', { 'id':  blog.id }) }}">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Edit
+            </a>
+            <a class="btn btn-primary" href="{{ path('back_blog_new') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                New
+            </a>
+            <form action="{{ path('back_blog_delete', { 'id': blog.id }) }}" method="post" style="display: inline-block">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                    <i class="fa fa-trash-o"></i> 
+                    Delete</button>
+            </form>
+        </div>
+
+    </div>
+    <hr>
+
+{% endblock %}
+

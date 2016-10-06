@@ -1,0 +1,47 @@
+{% extends "SpectasonicFrontUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block second_title %}
+    {{ 'user.register.title_page' | trans }} {{ parent() }}    
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="element  clearfix rectangle col3 home">
+        <div class="padding-wrapper">
+            <figure class="images">
+                {% image 'images/fullscreen12.jpg' %}
+                <img src="{{ asset_url }}" alt="" />
+                {% endimage %}
+            </figure>
+            <div class="grey-bg-large">
+                <p class="small">{{ 'user.register.title1' | trans }}</p>
+                <h2 class="header">{{ 'user.register.title2' | trans }}</h2>
+                <div class="post-text">  
+                    <p>This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, <a href="#" title="">typeset</a> text. Only for show. He who searches for meaning here will be sorely disappointed.  These words are here to provide the reader with a basic impression of how <strong>actual text</strong> will appear in its final presentation. </p>
+
+                    {% include "SpectasonicFrontUserBundle:Registration:register_content.html.twig" %}
+
+                </div>
+                <div class="stats clearfix">
+                    <span class="alignleft">
+                        <p>* <i>required fields</i></p>
+                    </span> <span class="alignright">
+                        <ul class="social-list clearfix">
+                            <li>
+                                <p>Share:</p>
+                            </li>
+                            <li> <a href="#" class="circled"> <i class="fa fa-pinterest-p"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-twitter"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-google-plus"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-facebook"></i> </a> </li>
+                        </ul>
+                    </span>
+                </div>
+                <!-- end grey-bg-large -->
+            </div>
+            <!-- end padding-wrapper -->
+        </div>
+        <!-- end element  clearfix rectangle col3 home -->    
+    </div>
+{% endblock fos_user_content %}

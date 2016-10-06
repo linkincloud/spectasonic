@@ -1,0 +1,32 @@
+{% extends "SpectasonicBackShopManagerBundle::layout.html.twig" %}
+
+
+{% block title %}
+    {{ 'back.shop.category.add.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block shop_content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Create a new Shop category</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                    {{ form_start(form, {'method': 'post', 'action': path('spectasonic_back_shop_manager_new_category'), 'attr': {'class': 'spectasonic_back_shop_manager_new_category'}}) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.mainimage) }}
+                    <button type="submit" value="" class="btn btn-success"/>Add a new catagory</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+
+{% endblock %}

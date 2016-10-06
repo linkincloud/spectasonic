@@ -1,0 +1,126 @@
+<?php
+
+namespace Spectasonic\Back\ShopManagerBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+use Gedmo\Mapping\Annotation as Gedmo;
+
+/**
+ * ShopCategory
+ *
+ * @ORM\Table(name="shop_category")
+ * @ORM\Entity(repositoryClass="Spectasonic\Back\ShopManagerBundle\Repository\ShopCategoryRepository")
+ */
+class ShopCategory
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
+     */
+    private $name;
+
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(length=255, unique=true)
+     */
+    private $slug;
+
+    /**
+     * @var string FMElfinderBundle
+     * @ORM\Column(name="mainimage", type="string", length=255, nullable=true)
+     */
+    private $mainimage;
+    
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return ShopCategory
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return ShopCategory
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set mainimage
+     *
+     * @param string $mainimage
+     *
+     * @return ShopCategory
+     */
+    public function setMainimage($mainimage)
+    {
+        $this->mainimage = $mainimage;
+
+        return $this;
+    }
+
+    /**
+     * Get mainimage
+     *
+     * @return string
+     */
+    public function getMainimage()
+    {
+        return $this->mainimage;
+    }
+}

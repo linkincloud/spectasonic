@@ -1,0 +1,12 @@
+{# empty Twig template #}
+
+{% extends "SpectasonicBackCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    {% block second_title %}{% endblock %} - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+    {% block usermanager_content %}
+    {% endblock %}
+{% endblock %}

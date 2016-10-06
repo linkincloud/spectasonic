@@ -1,0 +1,7 @@
+{% for post in listPosts %}
+    <li>
+      <a href="{{ path('spectasonic_front_news_view_post', {'category':'services', 'slug': post.slug}) }}.html">
+        {{ post.title }}
+      </a>
+    </li>
+  {% endfor %}

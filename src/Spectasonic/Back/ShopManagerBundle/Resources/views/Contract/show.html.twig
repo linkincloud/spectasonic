@@ -1,0 +1,56 @@
+{% extends "SpectasonicBackShopManagerBundle::layout.html.twig" %}
+
+
+{% block title %}
+    {{ 'contract.show.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block shop_content %}
+
+    <header class="panel-heading">
+        <h2> Contract</h2>
+    </header>
+    <div class="panel-body">
+
+        <form class="form">
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Id</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ contract.id }}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Reference</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ contract.reference }}</span>
+                </div>
+            </div>       
+        </form>
+        <hr>
+        <div class="form-group">
+            <a class="btn btn-default" href="{{ path('spectasonic_back_shop_manager_list_contract') }}">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Back to list
+            </a>
+            <a class="btn btn-success" href="{{ path('spectasonic_back_shop_manager_edit_contract', { 'id':  contract.id }) }}">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Edit
+            </a>
+            <a class="btn btn-primary" href="{{ path('spectasonic_back_shop_manager_new_contract') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                New
+            </a>
+            <form action="{{ path('spectasonic_back_shop_manager_delete_contract', { 'id': contract.id }) }}" method="post" style="display: inline-block">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                    <i class="fa fa-trash-o"></i> 
+                    Delete</button>
+            </form>
+        </div>
+
+    </div>
+    <hr>
+
+{% endblock %}
+

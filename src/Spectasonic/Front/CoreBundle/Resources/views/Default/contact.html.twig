@@ -1,0 +1,100 @@
+{# src\Spectasonic\Front\CoreBundle\Resources\views\Default\contact.html.twig #}
+
+{# %  set active_route = 'oc_core_homepage' % #}
+
+{% extends "SpectasonicFrontCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ 'core.index.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block content %}
+    <div class="logo_container">
+        <h1 id="logo"><a href="{{ path('spectasonic_front_core_homepage') }}">Spectasonic</a></h1>
+    </div>
+    <div class="container">
+        <div class="clear"></div>
+        <div id="container" class="clearfix">
+            <div class="element  clearfix rectangle col3 home">
+                <div class="padding-wrapper">
+                    <figure class="images">
+                        {% image 'images/fullscreen12.jpg' %}
+                        <img src="{{ asset_url }}" alt="" />
+                        {% endimage %}
+                    </figure>
+                    <div class="grey-bg-large">
+                        <p class="small">Contact Form</p>
+                        <h2 class="header">Say Hello!</h2>
+                        <div class="post-text">
+                            <p>This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, <a href="#" title="">typeset</a> text. Only for show. He who searches for meaning here will be sorely disappointed.  These words are here to provide the reader with a basic impression of how <strong>actual text</strong> will appear in its final presentation. </p>
+                            <form class="form-part" method="post" action="http://weibergmedia.com/demos/cc/contact.php" name="contactform" id="contactform" autocomplete="off">
+                                <input name="name" type="text" id="name" size="30" title="Name *" />
+                                <input name="email" type="text" id="email" size="30" title="Email *" />
+                                <textarea name="comments" cols="40" rows="3" id="comments" title="Your Message *"></textarea>
+                                <div class="input-wrapper clearfix">
+                                    <input type="submit" class="send-btn" value="Send" id="submit" name="Submit" />
+                                    <span id="message"></span></div>
+                            </form>
+                        </div>
+                        <div class="break"></div>
+                        <div class="stats clearfix"> <span class="alignleft">
+                                <p>* <i>required fields</i></p>
+                            </span> <span class="alignright">
+                                <ul class="social-list clearfix">
+                                    <li>
+                                        <p>Share:</p>
+                                    </li>
+                                    <li> <a href="#" class="circled"> <i class="fa fa-pinterest-p"></i> </a> </li>
+                                    <li> <a href="#" class="circled"><i class="fa fa-twitter"></i> </a> </li>
+                                    <li> <a href="#" class="circled"><i class="fa fa-google-plus"></i> </a> </li>
+                                    <li> <a href="#" class="circled"><i class="fa fa-facebook"></i> </a> </li>
+                                </ul>
+                            </span> </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element  clearfix rectangle col1-1 home auto-mobile">
+                <div class="padding-wrapper">
+                    <div class="grey-bg full-height">
+                        <div class="box-parent">
+                            <div class="child">
+                                <p class="small">Details</p>
+                                <h3 class="header">How to Reach me</h3>
+                                <ul class="unordered-list">
+                                    <li>285 Lexington Ave <br />
+                                        New York, 12603 NY </li>
+                                    <li>+001 (845) 123 456</li>
+                                    <li><a href="mailto:info@domain.com" data-title="">info@corpuschristi.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="element  clearfix rectangle col1-1 home">
+                <div class="padding-wrapper">
+                    <div class="grey-bg no-padding full-height">
+                        <ul class="social-list clearfix custom custom5">
+                            <li> <a href="#"><i class="fa fa-twitter"></i>
+                                    <p>@corpuschristi</p>
+                                </a> </li>
+                            <li> <a href="#"><i class="fa fa-snapchat"></i>
+                                    <p>Add Me on Snapchat</p>
+                                </a> </li>
+                            <li> <a href="#"><i class="fa fa-soundcloud"></i>
+                                    <p>CC9</p>
+                                </a> </li>
+                            <li> <a href="#"><i class="fa fa-instagram"></i>
+                                    <p>I'm on Instagram</p>
+                                </a> </li>
+                            <li> <a href="#"><i class="fa fa-facebook"></i>
+                                    <p>Like Me</p>
+                                </a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end #container --> 
+    </div>
+{% endblock %}

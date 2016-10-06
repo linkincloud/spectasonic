@@ -1,0 +1,97 @@
+{% extends "SpectasonicBackShopManagerBundle::layout.html.twig" %}
+
+
+{% block title %}
+    {{ 'back.shop.show.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block shop_content %}
+
+    <header class="panel-heading">
+        <h2> Product</h2>
+    </header>
+    <div class="panel-body">
+        {% if shopProduct.mainimage is defined %}
+            <img width="25%"
+                 src="{{ asset(shopProduct.mainimage) }}"
+                 alt=""
+                 />
+        {% endif %}
+        <form class="form form-horizontal">
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Id</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ shopProduct.id }}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ shopProduct.name }}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Description</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ shopProduct.excerpt }}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Actived</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{% if shopProduct.actived %}Yes{% else %}No{% endif %}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Reference</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ shopProduct.reference }}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Slug</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ shopProduct.slug }}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Content</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ shopProduct.content | raw }}</span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="col-sm-2 control-label">Slider</label>
+                <div class="col-sm-10">
+                    <span class="input-xlarge uneditable-input">{{ shopProduct.slider }}</span>
+                </div>
+            </div>   
+        </form>
+        <hr>
+        <div class="form-group">
+            <a class="btn btn-default" href="{{ path('spectasonic_back_shop_manager_list_product') }}">
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Back to list
+            </a>
+            <a class="btn btn-success" href="{{ path('spectasonic_back_shop_manager_edit_product', { 'id':  shopProduct.id }) }}">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                Edit
+            </a>
+            <a class="btn btn-primary" href="{{ path('spectasonic_back_shop_manager_new_product') }}">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                New
+            </a>
+            <form action="{{ path('spectasonic_back_shop_manager_delete_product', { 'id': shopProduct.id }) }}" method="post" style="display: inline-block">
+                <input type="hidden" name="_method" value="DELETE" />
+                {{ form_widget(delete_form) }}
+                <button class="btn btn-danger" type="submit" onclick="return confirm('Are you sure');">
+                    <i class="fa fa-trash-o"></i> 
+                    Delete</button>
+            </form>
+        </div>
+
+    </div>
+    <hr>
+
+{% endblock %}
+

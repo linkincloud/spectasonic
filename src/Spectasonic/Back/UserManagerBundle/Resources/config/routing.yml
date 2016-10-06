@@ -1,0 +1,40 @@
+spectasonic_back_user_manager_homepage:
+    path:     /manager
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:index }
+
+spectasonic_back_user_manager_view:
+    path:     /manager/user/{id}
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:viewuser }
+    requirements:
+        id: \d+
+
+spectasonic_back_user_manager_edit_user:
+    path:     /manager/edit/user/{id}
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:edituser }
+    requirements:
+        id: \d+
+
+spectasonic_back_user_manager_add_user:
+    path:     /manager/add/user
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:adduser }
+
+
+
+spectasonic_back_user_manager_add_address_user:
+    path:     /manager/add/user/{id}/address/{type}
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:addaddress }
+    requirements:
+        id: \d+
+        type: billing|shipping
+     
+spectasonic_back_user_manager_edit_address_user:
+    path:     /manager/edit/user/{iduser}/address/{idaddress}
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:editaddress }
+    requirements:
+        iduser: \d+
+        idaddress: \d+
+
+# pour tester
+#spectasonic_back_user_manager_add_address_user:
+#    path:     /manager/add/address
+#    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:addaddress }

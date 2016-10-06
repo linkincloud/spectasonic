@@ -1,0 +1,52 @@
+user:
+    login:
+        title_page: Login page
+        title1: Login form
+        title2: The future is now
+        message1: If your're a new user ? Create our account now !
+    register:
+        title_page: Register page
+        title1: Register form
+        title2: The future is now
+    profile:
+        title_page: My account        
+core:
+    layout:
+        title:            My platform of IT jobs
+        description:      This project is lauching by Sensio Labs...
+        description_link: Come to our MOOC
+        menu_title:       See all jobs
+        menu_home:        Home
+        menu_add:         Add a now job
+        menu_last_job:    Last jobs
+        footer:           The sky's the limit © %date% and beyond.
+        services:         Services
+        values:           Our values
+        user:
+            admin:        Private Area
+            logout:       Logout
+            caddie:       My caddie
+            order:        My orders
+            account:      My account
+    layout_menu:
+        tab_home:         Home
+        tab_jobs:         Jobs
+        tab_contact:      Contact us
+        tab_profil:       Your profil
+        tab_login:        Login
+        tab_logout:       Logout
+    index:
+        title_page:       Home
+        welcome:          Welcome
+        description:      This is a homepage of the training Symfony's OpenClassroom.
+
+registration:
+    email:
+        subject: 'Welcome %username% !'
+        message: |
+            Hello %username%!
+
+            To finish activating your account - please visit %confirmationUrl%
+
+            Regards,
+            the Spectasonic Team.

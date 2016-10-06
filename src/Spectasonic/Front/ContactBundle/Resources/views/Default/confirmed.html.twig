@@ -1,0 +1,48 @@
+{% extends "SpectasonicFrontContactBundle::layout.html.twig" %}
+
+{% block second_title %}
+    {{ 'contact.confirmed.title_page' |trans }}
+{% endblock %}
+
+{% block contact_content %}
+    <div class="element clearfix rectangle col3 home">
+        <div class="padding-wrapper">
+            <figure class="images">
+                {% image 'images/fullscreen12.jpg' %}
+                <img src="{{ asset_url }}" alt="" />
+                {% endimage %}
+            </figure>
+            <div class="grey-bg-large">
+                <p class="small">{{ 'contact.confirmed.title1' | trans }}</p>
+                <h2 class="header">{{ 'contact.confirmed.title2' | trans }}</h2>
+                <div class="post-text">  
+                    <p>Thank your for your message ! We will reply you soon.
+                    Best regards.</p>
+                </div>
+                <div class="stats clearfix">
+                    <span class="alignleft">
+                        <p>* <i>required fields</i></p>
+                    </span>
+
+                    <span class="alignright">
+                        <ul class="social-list clearfix">
+                            <li>
+                                <p>Share:</p>
+                            </li>
+                            <li> <a href="#" class="circled"> <i class="fa fa-pinterest-p"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-twitter"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-google-plus"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-facebook"></i> </a> </li>
+                        </ul>
+                    </span>
+                </div>
+                <br /> 
+
+                <!-- end grey-bg-large -->
+            </div>
+            <!-- end padding-wrapper -->
+        </div>
+        <!-- end element  clearfix rectangle col3 home -->    
+    </div>
+
+{% endblock contact_content %}

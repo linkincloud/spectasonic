@@ -1,0 +1,7 @@
+spectasonic_front_contact_homepage:
+    path:     /contact
+    defaults: { _controller: SpectasonicFrontContactBundle:Default:index }
+    
+spectasonic_front_contact_confirmed:
+    path:     /contact/confirmed
+    defaults: { _controller: SpectasonicFrontContactBundle:Default:confirmed }

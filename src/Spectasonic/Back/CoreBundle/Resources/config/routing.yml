@@ -1,0 +1,18 @@
+# SECURITY
+spectasonic_back_core_security:
+    resource: "@SpectasonicBackCoreBundle/Resources/config/routing/security.yml"
+
+# SLIDER HOMEPAGE CONFIGURATOR
+spectasonic_back_configuration:
+    prefix:   /configuration
+    resource: "@SpectasonicBackCoreBundle/Resources/config/routing/configuration.yml"
+    
+# HOMEPAGE CONFIGURATION
+spectasonic_back_configuration_homepage:
+    prefix:   /configuration
+    resource: "@SpectasonicBackCoreBundle/Resources/config/routing/homepage.yml"
+
+# BACKOFFICE
+spectasonic_back_core_homepage:
+    path:     /
+    defaults: { _controller: SpectasonicBackCoreBundle:Default:index }

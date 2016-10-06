@@ -1,0 +1,4 @@
+services:
+#    spectasonic_front_news.example:
+#        class: Spectasonic\Front\NewsBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -1,0 +1,24 @@
+services:
+    user.form.profile.type:
+        class: Spectasonic\Front\UserBundle\Form\Type\ProfileType
+        parent: fos_user.profile.form.type
+        tags:
+            - { name: form.type, alias: spectasonic_front_fos_user_profile }
+
+    user.form.register.type:
+        class: Spectasonic\Front\UserBundle\Form\Type\RegisterType
+        parent: fos_user.registration.form.type
+        tags:
+            - { name: form.type, alias: spectasonic_front_fos_user_register }
+            
+    user.form.adduser.type:
+        class: Spectasonic\Front\UserBundle\Form\Type\AddUserType
+        parent: fos_user.registration.form.type
+        tags:
+            - { name: form.type, alias: spectasonic_front_add_user }
+    
+    user.form.edituser.type:
+        class: Spectasonic\Front\UserBundle\Form\Type\EditUserType
+        parent: fos_user.registration.form.type
+        tags:
+            - { name: form.type, alias: spectasonic_front_edit_user }

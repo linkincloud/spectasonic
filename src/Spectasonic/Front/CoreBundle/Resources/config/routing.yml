@@ -1,0 +1,3 @@
+spectasonic_front_core_homepage:
+    path:     /
+    defaults: { _controller: SpectasonicFrontCoreBundle:Default:index }

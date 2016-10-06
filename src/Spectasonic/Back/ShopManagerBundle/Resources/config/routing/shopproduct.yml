@@ -1,0 +1,31 @@
+shop_product:
+    pattern:  /
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:ShopProduct:index" }
+
+shop_product_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:ShopProduct:show" }
+
+shop_product_new:
+    pattern:  /new
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:ShopProduct:new" }
+
+shop_product_create:
+    pattern:  /create
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:ShopProduct:create" }
+    requirements: { _method: post }
+
+shop_product_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:ShopProduct:edit" }
+
+shop_product_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:ShopProduct:update" }
+    requirements: { _method: post|put }
+
+shop_product_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:ShopProduct:delete" }
+    requirements: { _method: post|delete }
+

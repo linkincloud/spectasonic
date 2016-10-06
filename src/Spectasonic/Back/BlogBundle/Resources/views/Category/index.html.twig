@@ -1,0 +1,155 @@
+{% extends "SpectasonicBackBlogBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ 'back.blog.category.index.title_page' | trans }} {{ parent() }}    
+{% endblock %}
+
+{% block blog_content %}
+
+    <header class="panel-heading">
+        <h2>BlogCategory list </h2>
+    </header>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-md-12">
+                {% for flash_message in app.session.flashbag.get('error') %}
+                    <div class="alert alert-error ">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+                {% for flash_message in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success ">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                {% if form_errors(filterForm) %}
+                    <div class="alert alert-block alert-error fade in form-errors">
+                        {{ form_errors(filterForm) }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="filters-right">
+            <a class="btn dropdown-toggle" data-toggle="collapse" data-target="#filters">
+                Filter
+                <span class="caret"></span>
+            </a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div id="filters" class="collapse">
+
+                    <form class="well" action="{{ path('spectasonic_back_blog_category') }}" method="get" >
+                        {{ form_row(filterForm.id) }}
+                        {{ form_row(filterForm.name) }}
+                        {{ form_rest(filterForm) }}
+
+                        <p>
+                            <button type="submit" class="btn btn-primary" name="filter_action" value="filter">Filter</button>
+                            <button type="submit" class="btn btn-default" name="filter_action" value="reset">Reset</button>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2 form-group pull-right">
+                <a class="btn btn-primary likepaginator" href="{{ path('spectasonic_back_blog_category_new') }}">
+                    <i class="fa fa-plus"></i> New
+                </a>
+            </div>
+        </div>
+
+
+        <form method="POST" action="{{ path('spectasonic_back_blog_category_bulk') }} ">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th width="20px"><input type="checkbox" class="check-all" onclick="toggle(this);"></th>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Slug</th>
+                                <th width = "130px">List</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for blogCategory in blogCategories %}
+                                <tr>
+                                    <td><input type="checkbox" name="ids[]" class="check-all" value="{{blogCategory.id}}"/></td>
+
+                                    <td><a href="{{ path('spectasonic_back_blog_category_show', { 'id': blogCategory.id }) }}">{{ blogCategory.id }}</a></td>
+                                    <td>{{ blogCategory.name }}</td>
+                                    <td>
+                                        {% if blogCategory.mainimage is defined %}
+                                            <img width="25%"
+                                                 src="{{ asset(blogCategory.mainimage) }}"
+                                                 alt=""
+                                                 />
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ blogCategory.slug }}</td>
+                                    <td>    <a  onclick="return confirm('Are you sure!');" title="Delete" class="btn btn-danger btn-sm" href="{{ path('spectasonic_back_blog_category_delete_by_id', { 'id': blogCategory.id}) }}">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
+                                        <a title='show' class="btn btn-success btn-sm" href="{{ path('spectasonic_back_blog_category_show', { 'id': blogCategory.id }) }}">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                        <a  title='edit' class="btn btn-primary btn-sm" href="{{ path('spectasonic_back_blog_category_edit', { 'id': blogCategory.id }) }}">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 pull-left">
+                    <div class="pagination form-inline ">
+                        <select class = "form-control" name="bulk_action" >
+                            <option value="delete">DELETE</option>
+                        </select>
+                        <input type="submit"  class="form-control btn btn-danger btn-sm">
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-md-offset-4 text-right">
+                    {{ pagerHtml|raw }} 
+                </div>
+            </div>
+        </form>
+
+        <script type="text/javascript">
+            function toggle(source) {
+                var aInputs = document.getElementsByTagName('input');
+                for (var i = 0; i < aInputs.length; i++) {
+                    if (aInputs[i] !== source && aInputs[i].className === source.className) {
+                        aInputs[i].checked = source.checked;
+                    }
+                }
+            }
+        </script>
+
+    </div>
+
+
+{% endblock %}
+

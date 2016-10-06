@@ -1,0 +1,36 @@
+{% extends "SpectasonicBackUserManagerBundle::layout.html.twig" %}
+
+
+{% block title %}
+    {{ 'add.address.index.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block usermanager_content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Add {{ type|capitalize  }} Address : {{ user.firstname|capitalize  }} {{ user.lastname|upper }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    {% form_theme form 'bootstrap_3_layout.html.twig' %}
+                    {{ form_start(form, {'method': 'post', 'action': path('spectasonic_back_user_manager_add_address_user', {'id': user.id, 'type':type }), 'attr': {'class': 'spectasonic_back_user_manager_add_address_user'}}) }}
+                    {{ form_row(form.society) }}
+                    {{ form_row(form.person) }}
+                    {{ form_row(form.phone) }}
+                    {{ form_row(form.line1) }}
+                    {{ form_row(form.line2) }}
+                    {{ form_row(form.code) }}
+                    {{ form_row(form.city) }}
+                    {{ form_row(form.country) }}
+                    <button type="submit" value="" class="btn btn-success"/>Add {{ type }} address</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+{% endblock %}

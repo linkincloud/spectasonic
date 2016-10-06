@@ -1,0 +1,132 @@
+{# src\Spectasonic\Front\CoreBundle\Resources\views\Default\index.html.twig #}
+
+{% extends "SpectasonicFrontCoreBundle::layout.html.twig" %}
+
+{% set active_route = 'spectasonic_front_core_homepage' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}
+    {{ 'core.index.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block content %}
+    <div class="logo_container">
+        <h1 id="logo"><a href="{{ path('spectasonic_front_core_homepage') }}">Spectasonic</a></h1>
+    </div>
+
+    {% if (homepage.enabled is defined) and (homepage.enabled == true) %}
+         {{ include("SpectasonicFrontCoreBundle:Default:index-header.html.twig") }}
+    {% endif %}
+
+    <div class="container">
+        <div id="container" class="clearfix">
+            <div class="element  clearfix rectangle col1-1 home">
+                <div class="padding-wrapper"> <a href="{{ path('spectasonic_front_shop_homepage') }}" title="See All products">
+                        <figure class="images">
+                            {% image 'images/index_shop.png' %}
+                            <img src="{{ asset_url }}" alt="See all our products" />
+                            {% endimage %}
+
+                            <div class="covering-image visible">
+                                <div class="info-box-content">
+                                    <div class="parent">
+                                        <div class="child">
+                                            <blockquote>
+                                                <p>Our new products the cutting edge of technology.</p>
+                                                <p class="name">- Spectasonic Products</p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+            {{ render(controller('SpectasonicFrontShopBundle:Default:front', {'limit': 3, 'category': ''})) }}
+        </div>
+
+        <div id="container" class="clearfix">
+            <div class="element  clearfix rectangle col1-1 home">
+                <div class="padding-wrapper"> <a href="{{ path('spectasonic_front_news_homepage') }}" title="See All News">
+                        <figure class="images">
+                            {% image 'images/index_blog.png' %}
+                            <img src="{{ asset_url }}" alt="See all our news" />
+                            {% endimage %}
+
+                            <div class="covering-image visible">
+                                <div class="info-box-content">
+                                    <div class="parent">
+                                        <div class="child">
+                                            <blockquote>
+                                                <p>All news about Spectasonic Products and our new technology for you !</p>
+                                                <p class="name">- Spectasonic Blog</p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+            {{ render(controller('SpectasonicFrontNewsBundle:Default:front', {'limit': 3, 'page': '0', 'category': ''})) }}
+        </div>
+
+        <div id="container" class="clearfix">
+            <div class="element  clearfix rectangle col1-1 home">
+                <div class="padding-wrapper"> <a href="{{ path('spectasonic_front_news_view_by_category', {'category': 'services'}) }}.html" title="See All our services">
+                        <figure class="images">
+                            {% image 'images/image06.jpg' %}
+                            <img src="{{ asset_url }}" alt="See all our services" />
+                            {% endimage %}
+
+                            <div class="covering-image visible">
+                                <div class="info-box-content">
+                                    <div class="parent">
+                                        <div class="child">
+                                            <blockquote>
+                                                <p>Spectasonic purpose you a lot of amazing services</p>
+                                                <p class="name">- Spectasonic Services</p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+            {{ render(controller('SpectasonicFrontNewsBundle:Default:front', {'limit': 3, 'page': '1', 'category': 'services'})) }}
+        </div>
+
+        <div id="container" class="clearfix">
+            <div class="element  clearfix rectangle col1-1 home">
+                <div class="padding-wrapper"> <a href="{{ path('spectasonic_front_news_view_by_category', {'category': 'values'}) }}.html" title="See All our values">
+                        <figure class="images">
+                            {% image 'images/index_values.png' %}
+                            <img src="{{ asset_url }}" alt="See all our values" />
+                            {% endimage %}
+                            <div class="covering-image visible">
+                                <div class="info-box-content">
+                                    <div class="parent">
+                                        <div class="child">
+                                            <blockquote>
+                                                <p>Our values are very important for ourselves.</p>
+                                                <p class="name">- Spectasonic Values</p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </figure>
+                    </a>
+                </div>
+            </div>
+            {{ render(controller('SpectasonicFrontNewsBundle:Default:front', {'limit': 3, 'page': '1', 'category': 'values'})) }}
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+spectasonic_front_news_homepage:
+    path:            /news
+    defaults:
+        _controller: SpectasonicFrontNewsBundle:Default:index
+        
+spectasonic_front_news_view_by_category:
+    path:            /blog/{category}/all.{format}
+    defaults:
+        _controller: SpectasonicFrontNewsBundle:Default:viewcategory
+        format:      html
+    requirements:
+        format:      html
+
+spectasonic_front_news_view_post:
+    path:            /blog/{category}/{slug}.{format}
+    defaults:
+        _controller: SpectasonicFrontNewsBundle:Default:view
+        format:      html
+    requirements:
+        format:      html
+        category:    "services|values"
+        
+        
+spectasonic_front_news_view_all_posts:
+    path:            /blog/{category}/{slug}.{format}
+    defaults:
+        _controller: SpectasonicFrontNewsBundle:Default:view
+        format:      html
+    requirements:
+        format:      html
+        

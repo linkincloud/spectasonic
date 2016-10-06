@@ -1,0 +1,167 @@
+{% extends "SpectasonicFrontContactBundle::layout.html.twig" %}
+
+{% block second_title %}
+    {{ 'contact.index.title_page' |trans }}
+{% endblock %}
+
+{% block contact_content %}
+    <div class="element clearfix rectangle col3 home">
+        <div class="padding-wrapper">
+            <figure class="images">
+                {% image 'images/fullscreen12.jpg' %}
+                <img src="{{ asset_url }}" alt="" />
+                {% endimage %}
+            </figure>
+            <div class="grey-bg-large">
+                <p class="small">{{ 'contact.index.title1' | trans }}</p>
+                <h2 class="header">{{ 'contact.index.title2' | trans }}</h2>
+                <div class="post-text">  
+                    <p>This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, <a href="#" title="">typeset</a> text. Only for show. He who searches for meaning here will be sorely disappointed.  These words are here to provide the reader with a basic impression of how <strong>actual text</strong> will appear in its final presentation. </p>
+                    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                    {# Les erreurs générales du formulaire. #}
+                    {{ form_errors(form) }}
+                    <div class="form-group">
+                        {# Génération du label. #}
+                        {{ form_label(form.name, "Nom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.name) }}
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {# Génération du label. #}
+                        {{ form_label(form.firstname, "Prenom", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.firstname) }}
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    {# Idem pour un autre champ. #}
+                    <div class="form-group">
+                        {{ form_label(form.email, "Email", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {{ form_errors(form.name) }}
+                        <div class="col-sm-4">
+                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {# Génération du label. #}
+                        {{ form_label(form.Title, "Sujet", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.Title) }}
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.Title, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {# Génération du label. #}
+                        {{ form_label(form.message, "Message", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+                        {# Affichage des erreurs pour ce champ précis. #}
+                        {{ form_errors(form.message) }}
+                        <div class="col-sm-4">
+                            {# Génération de l'input. #}
+                            {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    {# Génération du label + error + widget pour un champ #}
+                    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+                    {# Génération automatique des champs pas encore écrits.
+                       Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+                       et tous les champs cachés (type « hidden »). #}
+                    {{ form_rest(form) }}
+                    {# Fermeture de la balise <form> du formulaire HTML #}
+                    {{ form_end(form) }}
+                </div>
+                <div class="stats clearfix">
+                    <span class="alignleft">
+                        <p>* <i>required fields</i></p>
+                    </span>
+                    <span class="alignright">
+                        <ul class="social-list clearfix">
+                            <li>
+                                <p>Share:</p>
+                            </li>
+                            <li> <a href="#" class="circled"> <i class="fa fa-pinterest-p"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-twitter"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-google-plus"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-facebook"></i> </a> </li>
+                        </ul>
+                    </span>
+                </div>
+                <br /> 
+                <!-- end grey-bg-large -->
+            </div>
+            <!-- end padding-wrapper -->
+        </div>
+        <!-- end element  clearfix rectangle col3 home -->    
+    </div>
+    <div class="element  clearfix rectangle col1-1 home auto-mobile">
+        <div class="padding-wrapper">
+            <div class="grey-bg full-height">
+                <div class="box-parent">
+                    <div class="child">
+                        <p class="small">Details</p>
+                        <h3 class="header"> {{ 'contact.details.title' |trans }}</h3>
+                        <ul class="unordered-list">
+                            <li>285 Lexington Ave <br />
+                                New York, 12603 NY </li>
+                            <li>+001 (845) 123 456</li>
+                            <li><a href="mailto:info@linkincloud.net" data-title="">info@linkincloud.net</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="element  clearfix rectangle col1-1 home">
+        <div class="padding-wrapper">
+            <div class="grey-bg full-height">
+                <div class="box-parent">
+                    <div class="child">
+                        <p class="small">Hotline</p>
+                        <h3 class="header"> {{ 'contact.hotline.title' |trans }}</h3>
+                        <ul class="unordered-list">
+                            <li>Hotline : Myriam JOUBERT</li>
+                            <li>Relations Retailers : Didier CLARET</li>
+                        </ul>
+                        <p>Une question technique, un problème, n'hésitez pas appelez nous !</p>
+                        <ul class="unordered-list">
+                            <li>un seul numéro :<br />
+                                04 81 68 06 97</li>
+                            <li>du Lundi au Vendredi de 7h à 19h toute l'année sauf jours fériés.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="element  clearfix rectangle col1-1 home">
+        <div class="padding-wrapper">
+            <div class="grey-bg no-padding full-height">
+                <ul class="social-list clearfix custom custom5">
+                    <li>
+                        <a href="#"><i class="fa fa-twitter"></i>
+                            <p>@corpuschristi</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-instagram"></i>
+                            <p>I'm on Instagram</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-facebook"></i>
+                            <p>Like Me</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock contact_content %}

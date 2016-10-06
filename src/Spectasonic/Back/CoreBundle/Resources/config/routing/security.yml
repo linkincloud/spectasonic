@@ -1,0 +1,13 @@
+spectasonic_back_core_security_login:
+    path:     /login
+    defaults: { _controller: SpectasonicBackCoreBundle:Security:login }
+
+spectasonic_back_core_security_check:
+    path:     /login-check
+    defaults: { _controller: SpectasonicBackCoreBundle:Security:check }
+    requirements:
+        _method: GET|POST
+
+spectasonic_back_core_security_logout:
+    path:     /logout
+    defaults: { _controller: SpectasonicBackCoreBundle:Security:logout }

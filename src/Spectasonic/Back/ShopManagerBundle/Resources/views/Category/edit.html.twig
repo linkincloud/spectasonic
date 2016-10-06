@@ -1,0 +1,44 @@
+{% extends "SpectasonicBackShopManagerBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ 'back.shop.category.edit.title_page' | trans }} {{ parent() }}    
+{% endblock %}
+
+{% block shop_content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ 'back.shop.category.edit.title' | trans }} : {{ shopCategory.name }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6">
+                    {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+                    {{ form_start(edit_form, {'method': 'post', 'action': path('spectasonic_back_shop_manager_edit_category', {'id':shopCategory.id}), 'attr': {'class': 'spectasonic_back_shop_manager_edit_category'}}) }}
+                    {{ form_row(edit_form.name) }}
+                    {{ form_row(edit_form.mainimage) }}
+
+                    <button type="submit" value="" class="btn btn-success"/>Edit</button>
+                    {{ form_end(edit_form) }}   
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p> {{ 'back.shop.category.edit.form.message_delete' | trans }}</p>
+                    {% form_theme delete_form 'bootstrap_3_layout.html.twig' %}
+                    {{ form_start(delete_form) }}
+
+                    <button type="submit" value="" class="btn btn-danger"/>Delete</button>
+                    {{ form_end(delete_form) }}   
+                </div>
+
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+{% endblock %}

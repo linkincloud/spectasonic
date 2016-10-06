@@ -1,0 +1,27 @@
+spectasonic_front_shop_homepage:
+    path:     /shop
+    defaults: { _controller: SpectasonicFrontShopBundle:Default:index }
+        
+spectasonic_front_shop_view_by_category:
+    path:            /shop/{category}/all.{format}
+    defaults:
+        _controller: SpectasonicFrontShopBundle:Default:viewcategory
+        format:      html
+    requirements:
+        format:      html    
+    
+spectasonic_front_shop_view_product:
+    path:            /shop/{category}/{slug}.{format}
+    defaults:
+        _controller: SpectasonicFrontShopBundle:Default:view
+        format:      html
+    requirements:
+        format:      html       
+
+spectasonic_front_shop_view_all_posts:
+    path:            /shop/{category}/{slug}.{format}
+    defaults:
+        _controller: SpectasonicFrontShopBundle:Default:view
+        format:      html
+    requirements:
+        format:      html

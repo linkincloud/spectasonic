@@ -1,0 +1,21 @@
+core:
+    layout:
+        title:            Ma plateforme d'annonces
+        description:      Ce projet est propulsé par Symfony2, et construit grâce au MOOC OpenClassrooms et SensioLabs.
+        description_link: Participer au MOOC
+        menu_title:       Voir les annonces
+        menu_home:        Accueil
+        menu_add:         Ajouter une annonce
+        menu_last_job:    Dernières annonces
+        footer:           The sky's the limit © %date% and beyond.
+    layout_menu:
+        tab_home:         Accueil
+        tab_jobs:         Annonces
+        tab_contact:      Nous contacter
+        tab_profil:       Votre profil
+        tab_login:        Se connecter
+        tab_logout:       Se déconnecter
+    index:
+        title_page:       Accueil
+        welcome:          Bienvenue
+        description:      Ceci est la page d'accueil d'exemple du site pour le cours Symfony2 d'OpenClassRoom.

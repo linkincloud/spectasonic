@@ -1,0 +1,22 @@
+{# src\Spectasonic\Front\ShopBundle\Resources\views\Default\index.html.twig #}
+
+{# %  set active_route = 'oc_core_homepage' % #}
+
+{% extends "SpectasonicFrontCoreBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ 'forum.index.title_page' | trans }} - {{ parent() }}    
+{% endblock %}
+
+{% block content %}
+    <div class="logo_container">
+        <h1 id="logo"><a href="{{ path('spectasonic_front_core_homepage') }}">Spectasonic</a></h1>
+    </div>
+    <div class="container">
+        <div id="container" class="clearfix">
+            <h2>Forum</<h2>
+        </div>
+        <!-- end #container --> 
+    </div>
+    <div class="centered"><a href="older.html" title="" class="button load-more">Older Posts</a></div>
+{% endblock %}

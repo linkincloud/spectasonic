@@ -1,0 +1,4 @@
+services:
+#    spectasonic_front_forum.example:
+#        class: Spectasonic\Front\ForumBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

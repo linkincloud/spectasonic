@@ -1,0 +1,3 @@
+spectasonic_back_remote_homepage:
+    path:     /remote
+    defaults: { _controller: SpectasonicBackRemoteBundle:Default:index }

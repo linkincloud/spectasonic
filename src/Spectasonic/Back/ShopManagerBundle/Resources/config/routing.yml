@@ -1,0 +1,134 @@
+spectasonic_back_shop_manager_shop_contract:
+    resource: "@SpectasonicBackShopManagerBundle/Resources/config/routing/contract.yml"
+    prefix:   /shop/contract
+
+spectasonic_back_shop_manager_list_category:
+    path:     /shop/list/category
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopCategory:index }
+    
+spectasonic_back_shop_manager_new_category:
+    path:     /shop/add/category
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopCategory:new }
+    
+spectasonic_back_shop_manager_show_category:
+    path:     /shop/show/category/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopCategory:show }
+    requirements:
+        id: \d+
+        
+spectasonic_back_shop_manager_edit_category:
+    path:     /shop/edit/category/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopCategory:edit }
+    requirements:
+        id: \d+
+
+spectasonic_back_shop_manager_delete_category:
+    path:     /shop/delete/category/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopCategory:delete }
+    requirements:
+        id: \d+
+        
+        
+spectasonic_back_shop_manager_list_product:
+    path:     /shop/list/product
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopProduct:index }
+    
+spectasonic_back_shop_manager_new_product:
+    path:     /shop/add/product
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopProduct:new }
+    
+spectasonic_back_shop_manager_bulk_product:
+    path:     /shop/bulk/product
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopProduct:bulk }
+    
+spectasonic_back_shop_manager_show_product:
+    path:     /shop/show/product/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopProduct:show }
+    requirements:
+        id: \d+
+        
+spectasonic_back_shop_manager_edit_product:
+    path:     /shop/edit/product/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopProduct:edit }
+    requirements:
+        id: \d+
+
+spectasonic_back_shop_manager_delete_product:
+    path:     /shop/delete/product/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:ShopProduct:delete }
+    requirements:
+        id: \d+
+        
+
+spectasonic_back_shop_manager_list_contract:
+    path:     /shop/list/contract
+    defaults: { _controller: SpectasonicBackShopManagerBundle:Contract:index }
+    
+spectasonic_back_shop_manager_new_contract:
+    path:     /shop/add/contract
+    defaults: { _controller: SpectasonicBackShopManagerBundle:Contract:new }
+    
+spectasonic_back_shop_manager_bulk_contract:
+    path:     /shop/bulk/contract
+    defaults: { _controller: SpectasonicBackShopManagerBundle:Contract:bulk }
+    
+spectasonic_back_shop_manager_show_contract:
+    path:     /shop/show/contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:Contract:show }
+    requirements:
+        id: \d+
+        
+spectasonic_back_shop_manager_edit_contract:
+    path:     /shop/edit/contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:Contract:edit }
+    requirements:
+        id: \d+
+
+spectasonic_back_shop_manager_delete_contract:
+    path:     /shop/delete/contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:Contract:delete }
+    requirements:
+        id: \d+
+        
+spectasonic_back_shop_manager_delete_by_id_contract:
+    path:     /shop/delete2/contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:Contract:deletebyid }
+    requirements:
+        id: \d+
+        
+
+spectasonic_back_shop_manager_list_user_contract:
+    path:     /shop/list/user_contract
+    defaults: { _controller: SpectasonicBackShopManagerBundle:User_contract:index }
+    
+spectasonic_back_shop_manager_new_user_contract:
+    path:     /shop/add/user_contract
+    defaults: { _controller: SpectasonicBackShopManagerBundle:User_contract:new }
+    
+spectasonic_back_shop_manager_bulk_user_contract:
+    path:     /shop/bulk/user_contract
+    defaults: { _controller: SpectasonicBackShopManagerBundle:User_contract:bulk }
+    
+spectasonic_back_shop_manager_show_user_contract:
+    path:     /shop/show/user_contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:User_contract:show }
+    requirements:
+        id: \d+
+        
+spectasonic_back_shop_manager_edit_user_contract:
+    path:     /shop/edit/user_contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:User_contract:edit }
+    requirements:
+        id: \d+
+
+spectasonic_back_shop_manager_delete_user_contract:
+    path:     /shop/delete/user_contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:User_contract:delete }
+    requirements:
+        id: \d+
+        
+spectasonic_back_shop_manager_delete_by_id_user_contract:
+    path:     /shop/delete2/user_contract/{id}
+    defaults: { _controller: SpectasonicBackShopManagerBundle:User_contract:deletebyid }
+    requirements:
+        id: \d+

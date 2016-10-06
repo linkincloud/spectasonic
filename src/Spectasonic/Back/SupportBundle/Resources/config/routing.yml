@@ -1,0 +1,3 @@
+spectasonic_back_support_homepage:
+    path:     /support
+    defaults: { _controller: SpectasonicBackSupportBundle:Default:index }

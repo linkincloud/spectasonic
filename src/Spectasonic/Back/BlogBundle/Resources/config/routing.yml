@@ -1,0 +1,102 @@
+spectasonic_back_blog_sliders:
+    pattern:  /blog/sliders
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogSlider:index" }
+
+spectasonic_back_blog_sliders_show:
+    pattern:  /blog/slider/{id}/show
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogSlider:show" }
+
+spectasonic_back_blog_sliders_new:
+    pattern:  /blog/slider/new
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogSlider:new" }
+
+spectasonic_back_blog_sliders_edit:
+    pattern:  /blog/slider/{id}/edit
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogSlider:edit" }
+
+spectasonic_back_blog_sliders_delete:
+    pattern:  /blog/slider/{id}/delete
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogSlider:delete" }
+    requirements: { _method: post|delete }
+    
+spectasonic_back_blog_sliders_delete_by_id:
+    pattern:  /blog/slider/{id}/iddelete
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogSlider:deletebyid" }
+    requirements: { _method: post|delete }
+
+spectasonic_back_blog_sliders_bulk:
+    pattern:  /blog/sliders/bulk
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogSlider:bulk" }
+
+
+spectasonic_back_blog_category:
+    pattern:  /blog/category
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogCategory:index" }
+
+spectasonic_back_blog_category_show:
+    pattern:  /blog/category/{id}/show
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogCategory:show" }
+
+spectasonic_back_blog_category_new:
+    pattern:  /blog/category/new
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogCategory:new" }
+
+spectasonic_back_blog_category_edit:
+    pattern:  /blog/category/{id}/edit
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogCategory:edit" }
+
+spectasonic_back_blog_category_delete:
+    pattern:  /blog/category/{id}/delete
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogCategory:delete" }
+    requirements: { _method: post|delete }
+    
+spectasonic_back_blog_category_delete_by_id:
+    pattern:  /blog/category/{id}/iddelete
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogCategory:deletebyid" }
+    requirements: { _method: post|delete }
+
+spectasonic_back_blog_category_bulk:
+    pattern:  /blog/category/bulk
+    defaults: { _controller: "SpectasonicBackBlogBundle:BlogCategory:bulk" }
+
+
+
+back_blog:
+    pattern:  /blog
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:index" }
+
+back_blog_show:
+    pattern:  /blog/{id}/show
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:show" }
+
+back_blog_new:
+    pattern:  /blog/new
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:new" }
+
+back_blog_create:
+    pattern:  /blog/create
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:create" }
+    requirements: { _method: post }
+
+back_blog_edit:
+    pattern:  /blog/{id}/edit
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:edit" }
+
+back_blog_update:
+    pattern:  /blog/{id}/update
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:update" }
+    requirements: { _method: post|put }
+
+back_blog_delete:
+    pattern:  /blog/{id}/delete
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:delete" }
+    requirements: { _method: post|delete }
+
+back_blog_delete_by_id:
+    pattern:  /blog/{id}/iddelete
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:deletebyid" }
+    requirements: { _method: post|delete }
+
+back_blog_bulk:
+    pattern:  /blog/bulk
+    defaults: { _controller: "SpectasonicBackBlogBundle:Blog:bulk" }

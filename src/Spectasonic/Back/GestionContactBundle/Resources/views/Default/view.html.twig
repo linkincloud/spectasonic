@@ -1,0 +1,46 @@
+{% extends "SpectasonicBackGestionContactBundle::layout.html.twig" %}
+
+
+{% block second_title %}
+    {{ 'contact.show.title_page' | trans }} {{ parent() }}
+{% endblock %}
+
+{% block contact_content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">{{ enquiry.name }} {{ enquiry.firstname }}</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Email</th>
+                            <th>Titre du message</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                            <td>{{ enquiry.name }}</td>
+                            <td>{{ enquiry.firstname }}</td>
+                            <td>{{ enquiry.email }}</td>
+                            <td>{{ enquiry.title }}</td>
+                            <td>{{ enquiry.message }}</td>
+                            <td>{{ enquiry.date | date('H:m - d/m/y') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        <!-- .panel-body -->
+    </div>
+{% endblock %}

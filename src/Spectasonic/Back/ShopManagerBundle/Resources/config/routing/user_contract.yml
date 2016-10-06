@@ -1,0 +1,31 @@
+shop_user_contract:
+    pattern:  /
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:User_contract:index" }
+
+shop_user_contract_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:User_contract:show" }
+
+shop_user_contract_new:
+    pattern:  /new
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:User_contract:new" }
+
+shop_user_contract_create:
+    pattern:  /create
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:User_contract:create" }
+    requirements: { _method: post }
+
+shop_user_contract_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:User_contract:edit" }
+
+shop_user_contract_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:User_contract:update" }
+    requirements: { _method: post|put }
+
+shop_user_contract_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "SpectasonicBackShopManagerBundle:User_contract:delete" }
+    requirements: { _method: post|delete }
+

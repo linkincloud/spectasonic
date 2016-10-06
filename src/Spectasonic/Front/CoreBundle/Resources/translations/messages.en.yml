@@ -1,0 +1,146 @@
+back:
+    core:
+        index:
+            title_page: Dashboard Admin
+    
+    shop:
+        category:
+            index:
+                title_page: Category product
+            edit:
+                title_page: Edit a category
+                title: Edit a category
+                form:
+                    label_name: Choose a name
+                    label_mainimage: Choose a main image
+                    message_delete: Warning ! You can delete this category here !
+                    
+        
+        show:
+            title_page: Show a product
+            
+        edit:
+            title_page: Edit a product
+            form:
+                label_content: Choose a description product*
+                label_mainimage: Choose a main product image*
+                label_document: Choose a product Pdf
+                label_category: Choose a category*
+                label_slider: Choose a slider
+    configuration:
+        homepage:
+            edit:
+                title_page: Homepage Configurator
+                title: Homepage Configurator
+                notice: Notice - This page allow you to enable and select a slider for Homepage
+                form:
+                    label_enabled: Enabled Media Header ?
+                    label_slider: Choose a slider for Homepage ?
+        
+        slider:
+            index:
+                title_page : Slider Configurator
+                explain: Notice - This page allow you to create, edit and delete slider.
+            edit:
+                title_page : Edit Slider Configurator
+                form:
+                    label_image: Choose a main image
+                    label_video: Choose a main video
+                    label_slider: Choose a main slider
+            
+    blog:
+        index:
+            title_page: List Posts
+        show:
+            title_page: A Post
+        edit:
+            title_page: Edit a post
+            title: Edit a post
+            
+            
+            form:
+                label_author: Author (only Editor)
+                label_title: Title <h1>
+                label_excerpt: Excerpt
+                label_content: Body
+                label_published: Published ?
+                label_page: Check if a page
+                label_mainimage: Choose one main image
+                label_document: Choose one document (PDF...)
+                label_category: Choose one category
+               
+        new:
+            title_page: New post
+        
+        category:
+            index:
+                title_page: List Category Post
+            
+            show:
+                title_page: Category Post
+            
+            edit:
+                title_page: Edit A Category Post
+                
+            new:
+                title_page: New A Category Post
+        
+
+core:
+    layout:
+        title:            My platform of IT jobs
+        description:      This project is lauching by Sensio Labs...
+        description_link: Come to our MOOC
+        menu_title:       See all jobs
+        menu_home:        Home
+        menu_add:         Add a now job
+        menu_last_job:    Last jobs
+        footer:           The sky's the limit © %date% and beyond.
+        user:
+            logout:       Logout
+            caddie:       My caddie
+            order:        My orders
+            account:      My account
+        services:         Our services    
+    layout_menu:
+        tab_home:         Home
+        tab_jobs:         Jobs
+        tab_contact:      Contact us
+        tab_profil:       Your profil
+        tab_login:        Login
+        tab_logout:       Logout
+    index:
+        title_page:       Home
+        welcome:          Welcome
+        description:      This is a homepage of the training Symfony's OpenClassroom.
+        
+
+contact:
+    index:
+        title_page: Contact
+        title: Contacts manager
+        title1: Contact form
+        title2: The future is now
+    show:
+        title_page: Show contact
+        
+    confirmed:
+        title_page: Confirmed Contact
+        title1: Confirmed Contact
+        title2: Great !
+    
+    hotline:
+        title: Who & how
+    
+    details:
+        title: How to reach us
+        
+news:
+    index:
+        title_page: News
+
+shop:
+    index:
+        title_page: Shop
+        title1: Shop
+        title2: The future is now

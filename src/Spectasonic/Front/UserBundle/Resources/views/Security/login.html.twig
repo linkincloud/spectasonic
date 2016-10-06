@@ -1,0 +1,90 @@
+{% extends "SpectasonicFrontUserBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block second_title %}
+    {{ 'user.login.title_page' | trans }} {{ parent() }}    
+{% endblock %}
+
+{% block fos_user_content %}
+    <div class="element  clearfix rectangle col3 home">
+        <div class="padding-wrapper">
+            <figure class="images">
+                {% image 'images/fullscreen12.jpg' %}
+                <img src="{{ asset_url }}" alt="" />
+                {% endimage %}
+            </figure>
+            <div class="grey-bg-large">
+                <p class="small">{{ 'user.login.title1' | trans }}</p>
+                <h2 class="header">{{ 'user.login.title2' | trans }}</h2>
+                <div class="post-text">  
+                    <p>This is dummy copy. It is not meant to be read. It has been placed here solely to demonstrate the look and feel of finished, <a href="#" title="">typeset</a> text. Only for show. He who searches for meaning here will be sorely disappointed.  These words are here to provide the reader with a basic impression of how <strong>actual text</strong> will appear in its final presentation. </p>
+
+                    {% if error %}
+                        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {#% for key, message in app.session.flashbag.all() %}
+                        <div class="alert alert-{{ key }}">
+                            {{ message|trans({}, 'FOSUserBundle') }}
+                        </div>
+                    {% endfor %#}
+
+                    <form class="form-horizontal" action="{{ path("fos_user_security_check") }}" method="post">
+                        <div class="form-group">
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="username">{{ 'security.login.username'|trans }}</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label" for="password">{{ 'security.login.password'|trans }}</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="password" id="password" name="_password" required="required" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label for="remember_me">
+                                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" /> {{ 'security.login.remember_me'|trans }}
+                                    </label>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button class="btn btn-primary" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}">Login</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="stats clearfix">
+                    <span class="alignleft">
+                        <p>* <i>required fields</i></p>
+                    </span> <span class="alignright">
+                        <ul class="social-list clearfix">
+                            <li>
+                                <p>Share:</p>
+                            </li>
+                            <li> <a href="#" class="circled"> <i class="fa fa-pinterest-p"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-twitter"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-google-plus"></i> </a> </li>
+                            <li> <a href="#" class="circled"><i class="fa fa-facebook"></i> </a> </li>
+                        </ul>
+                    </span>
+                </div>
+                <br /> 
+                <p><a href="{{ path('fos_user_registration_register') }}">{% trans %}user.login.message1{% endtrans %}</a></p>
+                <br />           
+                <!-- end grey-bg-large -->
+            </div>
+            <!-- end padding-wrapper -->
+        </div>
+        <!-- end element  clearfix rectangle col3 home -->    
+    </div>
+{% endblock fos_user_content %}

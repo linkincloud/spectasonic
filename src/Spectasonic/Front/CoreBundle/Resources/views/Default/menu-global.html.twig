@@ -1,0 +1,14 @@
+{# src\Spectasonic\Front\CoreBundle\Resources\views\Default\menu-global.html.twig #}
+
+<ul class="nav nav-pills">
+    {% for titre, route in menuItems %}
+        <li {% if active_route == route %} class="active" {% endif %}><a href="{{ path(route) }}">{{ titre }}</a></li>
+        {% endfor %}
+
+
+    {% if app.request.locale == 'en' %}
+        <li><a href="{{ path('oc_core_select_lang', {'langue' : 'fr'}) }}">FR</a></li>
+    {% else %}   
+        <li><a href="{{ path('oc_core_select_lang', {'langue' : 'en'}) }}">EN</a></li>
+    {% endif %}
+</ul>
