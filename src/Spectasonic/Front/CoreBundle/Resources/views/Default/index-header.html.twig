@@ -2,17 +2,21 @@
     <div id="container" class="clearfix">
         {% if homepage.slider.mainimage  %}
             <img style="width: 100%;float: left;margin-right: -100%;position: relative;opacity: 1;display: block;z-index: 2;"
-                src="{{ homepage.slider.mainimage }}"
-                alt=""/>
+                 src="{{ homepage.slider.mainimage }}"
+                 alt=""/>
         {% elseif (homepage.slider.slider) and (homepage.slider.slider.medias | length > 0) %}
             <div class="flexslider">
                 <figure class="images">
                     <ul class="slides">
                         {% for media in homepage.slider.slider.medias %}
                             <li>
-                                <img 
-                                    src="{{ asset(media.url) }}" 
-                                    alt="" />
+                                {% if (media.link is defined) and (media.link is not empty) %}
+                                    <a href="{{ media.link }}">
+                                        <img src="{{ asset(media.url) }}" alt="" />
+                                    </a>
+                                {% else %} 
+                                    <img src="{{ asset(media.url) }}" alt="" />
+                                {% endif %}
                             </li>
                         {% endfor %}
                     </ul>

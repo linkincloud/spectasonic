@@ -18,11 +18,15 @@ class MediasType extends AbstractType
     {
         $builder
             ->add('url', new ElFinderType(), array(
-                    'label' => 'back.shop.medias.form.label_image',
+                    'label' => 'back.blog.medias.form.label_image',
                     'required' => true,
                     'instance' => 'form_image',
                     'enable' => true
-                ));
+                ))
+            ->add('link', 'url', array(
+                'label' => 'back.blog.medias.form.label_link',
+                'required' => false
+            ));
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)

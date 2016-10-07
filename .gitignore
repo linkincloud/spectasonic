@@ -1,3 +1,4 @@
+/web/assets/*
 /nbproject/
 /web/bundles/
 /app/bootstrap.php.cache

@@ -84,7 +84,10 @@ back:
                 
             new:
                 title_page: New A Category Post
-        
+        medias:
+            form:
+                label_image: Choose a image
+                label_link: Choose a URL for the image
 
 core:
     layout:

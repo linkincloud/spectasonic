@@ -23,6 +23,11 @@ class Medias {
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
+    
+    /**
+     * @ORM\Column(name="link", type="string", length=255)
+     */
+    private $link;
 
     /**
      * @ORM\Column(name="alt", type="string", length=255, nullable=true)
@@ -85,5 +90,29 @@ class Medias {
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    /**
+     * Set link
+     *
+     * @param string $link
+     *
+     * @return Medias
+     */
+    public function setLink($link)
+    {
+        $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get link
+     *
+     * @return string
+     */
+    public function getLink()
+    {
+        return $this->link;
     }
 }
