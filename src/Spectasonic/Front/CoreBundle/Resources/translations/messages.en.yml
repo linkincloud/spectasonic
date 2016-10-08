@@ -84,6 +84,16 @@ back:
                 
             new:
                 title_page: New A Category Post
+        
+        slider:
+            index:
+                title_page: Sliders for blog
+                title: Sliders list
+            edit:
+                title_page: Edit a slider
+                title: Edit a slider
+            
+        
         medias:
             form:
                 label_image: Choose a image
