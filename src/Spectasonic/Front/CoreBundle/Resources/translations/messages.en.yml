@@ -3,6 +3,50 @@ back:
         index:
             title_page: Dashboard Admin
     
+    vendor:
+        informations:
+            edit:
+                form:
+                    label_mainimage: Choose a main image for vendor
+                    label_content: Description vendor
+                    label_url_to_vendor: Url vendor website 
+                    label_url_to_product: Url page product
+                    label_country: Choose your country
+    
+    continent:
+        index:
+            title_page : Continent List
+            title: Continent List
+        add:
+            title_page : Add a new continent
+            title: Add a new continent
+            form:
+                label_namefr: Choose a name Fr
+                label_nameen: Choose a name En
+        edit:
+            title_page : Edit a continent
+            title: Edit a continent
+        delete:
+            title_page : Delete a continent
+            title: Delete a continent
+    
+    country:
+        index:
+            title_page : Country List
+            title: Country List
+        new:
+            title_page : Add a new country
+            title: Add a new country
+            form:
+                label_namefr: Choose a name Fr
+                label_nameen: Choose a name En
+        edit:
+            title_page : Edit a country
+            title: Edit a country
+        delete:
+            title_page : Delete a country
+            title: Delete a country
+    
     shop:
         category:
             index:

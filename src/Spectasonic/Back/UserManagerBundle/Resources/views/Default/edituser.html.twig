@@ -16,8 +16,19 @@
 
             <div class="row">
                 <div class="col-lg-6">
+                    {% if user.more.mainimage is defined %}
+                        <p><img width="25%" src="{{ asset(user.more.mainimage) }}" alt=""/></p>
+                    {% endif %}
                     {% form_theme form 'bootstrap_3_layout.html.twig' %}
                     {{ form_start(form, {'method': 'post', 'action': path('spectasonic_back_user_manager_edit_user', {'id':user.id}), 'attr': {'class': 'spectasonic_back_user_manager_edit_user'}}) }}
+                    {{ form_row(form.society) }}
+                    {% if 'ROLE_VENDEUR' in user.roles %}
+                        {{ form_row(form.more.mainimage) }}
+                        {{ form_row(form.more.description) }}
+                        {{ form_row(form.more.urlToVendor) }}
+                        {{ form_row(form.more.urlToProduct) }}
+                        {{ form_row(form.more.country) }}
+                    {% endif %}
                     {{ form_row(form.gender) }}
                     {{ form_row(form.username) }}
                     {{ form_row(form.firstname) }}

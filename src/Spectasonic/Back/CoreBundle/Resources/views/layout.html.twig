@@ -304,25 +304,49 @@
                                     <!-- /.nav-second-level -->
                                 </li>
                             {% endif %}
-                            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_VENDEUR') %}
+
+                            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDITEUR') %}
                                 <li>
-                                    <a href="#"><i class="fa fa-shopping-cart fa-fw"></i> USER CONTRACT<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> USER MANAGER<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="{{ path('spectasonic_back_shop_manager_list_user_contract') }}">View user contract</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('spectasonic_back_shop_manager_list_contract') }}">View list contract</a>
-                                        </li>
                                         {% if is_granted('ROLE_ADMIN') %}
-                                            <li>
-                                                <a href="{{ path('spectasonic_back_shop_manager_new_user_contract') }}">Create a user contract</a>
-                                            </li>
+                                        <li>
+                                            <a href="#">USERS <span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
+                                                <li>
+                                                    <a href="{{ path('spectasonic_back_user_manager_homepage') }}">View users</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('spectasonic_back_user_manager_add_user') }}">Create a new user</a>
+                                                </li>
+                                            </ul>
+                                            <!-- /.nav-third-level -->
+                                        </li>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_VENDEUR') %}
+                                        <li>
+                                            <a href="#">CONTRACT <span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
+                                                <li>
+                                                    <a href="{{ path('spectasonic_back_shop_manager_list_user_contract') }}">View user contract</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('spectasonic_back_shop_manager_list_contract') }}">View list contract</a>
+                                                </li>
+                                                {% if is_granted('ROLE_ADMIN') %}
+                                                    <li>
+                                                        <a href="{{ path('spectasonic_back_shop_manager_new_user_contract') }}">Create a user contract</a>
+                                                    </li>
+                                                {% endif %}
+                                            </ul>
+                                            <!-- /.nav-third-level -->
+                                        </li>
                                         {% endif %}
                                     </ul>
                                     <!-- /.nav-second-level -->
                                 </li>
                             {% endif %}
+
                             {% if is_granted('ROLE_ADMIN') %}
                                 <li>
                                     <a href="{{ path('spectasonic_back_remote_homepage') }}"><i class="fa fa-table fa-fw"></i> REMOTE DATA</a>
@@ -335,23 +359,10 @@
                             {% endif %}
                             {% if is_granted('ROLE_ADMIN') %}
                                 <li>
-                                    <a href="forms.html"><i class="fa fa-bug fa-fw"></i> PRODUCTS SUPPORT</a>
+                                    <a href="#"><i class="fa fa-bug fa-fw"></i> PRODUCTS SUPPORT</a>
                                 </li>
                             {% endif %}
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li>
-                                    <a href="#"><i class="fa fa-users fa-fw"></i> USERS/GROUPS<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="{{ path('spectasonic_back_user_manager_homepage') }}">View users</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('spectasonic_back_user_manager_add_user') }}">Create a new user</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                            {% endif %}
+
                             {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_EDITEUR') %}
                                 <li>
                                     <a href="#"><i class="fa fa-sitemap fa-fw"></i> BLOG<span class="fa arrow"></span></a>
@@ -379,17 +390,46 @@
                                 <li>
                                     <a href="#"><i class="fa fa-sitemap fa-fw"></i> CONFIGURATION<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="#">HOMEPAGE <span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
+                                                <li>
+                                                    <a href="{{ path('spectasonic_back_configuration_homepage') }}">Homepage</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('spectasonic_back_configuration_homepage_slider') }}">Header for Homepage</a>
+                                                </li>
+                                            </ul>
+                                            <!-- /.nav-third-level -->
+                                        </li>
+                                        <li>
+                                            <a href="#">MENU <span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
+                                                <li>
+                                                    <a href="#">Menu</a>
+                                                </li>
+                                               
+                                            </ul>
+                                            <!-- /.nav-third-level -->
+                                        </li>
+                                        <li>
+                                            <a href="#">COUNTRY <span class="fa arrow"></span></a>
+                                            <ul class="nav nav-third-level">
+                                                <li>
+                                                    <a href="{{ path('back_manager_country') }}">Country List</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('back_manager_continent') }}">Continent List</a>
+                                                </li>
+                                            </ul>
+                                            <!-- /.nav-third-level -->
+                                        </li>
 
-                                        <li>
-                                            <a href="{{ path('spectasonic_back_configuration_homepage') }}">Homepage</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ path('spectasonic_back_configuration_homepage_slider') }}">Slider for Homepage</a>
-                                        </li>
                                     </ul>
                                     <!-- /.nav-second-level -->
                                 </li>
                             {% endif %}
+
                             <!--<li>
                                 <a href="#"><i class="fa fa-files-o fa-fw"></i> CONTENT<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">

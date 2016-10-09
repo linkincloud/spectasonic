@@ -27,6 +27,7 @@
                                 <th>Client</th>
                                 <th>Username</th>
                                 <th>Email</th>
+                                <th>Country</th>
                                 <th>Roles</th>
                                 <th>Last connexion</th>
                                 <th>Actions</th>
@@ -34,28 +35,32 @@
                         </thead>
                         <tbody>
                             {% for user in listUsers %}
-                                
                                 <tr class="odd gradeX">
-                                <td>{{ user.id }}</td>
-                                <td>{{ user.lastname }} {{ user.firstname }}</td>
-                                <td>{{ user.username }}</td>
-                                <td>{{ user.email }}</td>
-                                <td>
-                                    <ul>
-                                    {% for role in user.roles %}
-                                        <li>
-                                            {{ role }}
-                                        </li>
-                                    {% endfor %}
-                                    </ul>
-                                </td>
-                                <td>{{ user.lastLogin|date("d/m/y") }}</td>
-                                
-                                <td><a href="{{ path('spectasonic_back_user_manager_view', {'id': user.id}) }}" type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i> View</a></td>
-                            </tr>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.lastname }} {{ user.firstname }}</td>
+                                    <td>{{ user.username }}</td>
+                                    <td>{{ user.email }}</td>
+                                    {% if user.more.country.nameFr is defined %}
+                                        <td>{{ user.more.country.nameFr }}</td>
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+                                    <td>
+                                        <ul>
+                                            {% for role in user.roles %}
+                                                <li>
+                                                    {{ role }}
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>{{ user.lastLogin|date("d/m/y") }}</td>
+
+                                    <td><a href="{{ path('spectasonic_back_user_manager_view', {'id': user.id}) }}" type="button" class="btn btn-info"><i class="fa fa-eye" aria-hidden="true"></i> View</a></td>
+                                </tr>
                             {% endfor %}
-                            
-                            
+
+
                             </tr>
                         </tbody>
                     </table>

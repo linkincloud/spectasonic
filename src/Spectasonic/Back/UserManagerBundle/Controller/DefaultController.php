@@ -55,7 +55,7 @@ class DefaultController extends Controller {
                 ->getManager()
                 ->getRepository('SpectasonicFrontUserBundle:User')
                 ->getOneUser($id);
-
+        
         if (null === $user) {
             throw new NotFoundHttpException("Cette utilisateur ID " . $id . " n'existe pas !");
         }

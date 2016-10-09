@@ -33,6 +33,8 @@ class UserRepository extends EntityRepository
                ->createQueryBuilder('u')
                ->leftJoin('u.address', 'addr')
                ->addSelect('addr')
+               ->leftJoin('u.more', 'more')
+               ->addSelect('more')
                ->where('u.id = :id')
                ->setParameter('id', $id)
                ->orderBy('addr.type', 'ASC');

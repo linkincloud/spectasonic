@@ -1,0 +1,41 @@
+back_manager_continent:
+    path:  /
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:index" }
+
+back_manager_continent_show:
+    path:  /{id}/show
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:show" }
+
+back_manager_continent_new:
+    path:  /new
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:new" }
+
+back_manager_continent_create:
+    path:  /create
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:create" }
+    requirements: { _method: post }
+
+back_manager_continent_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:edit" }
+
+back_manager_continent_update:
+    path:  /{id}/update
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:update" }
+    requirements: { _method: post|put }
+
+back_manager_continent_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:delete" }
+    requirements: { _method: post|delete }
+    
+back_manager_continent_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:deleteById" }
+    requirements: { _method: get }
+
+back_manager_continent_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Continent:bulk" }
+    requirements: { _method: post }
+    

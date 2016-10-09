@@ -34,7 +34,8 @@
         "twig/extensions": "~1.0",
                        
         "helios-ag/fm-elfinder-bundle": "~5",
-        "egeloen/ckeditor-bundle": "^4.0"
+        "egeloen/ckeditor-bundle": "^4.0",
+        "triton/crud-generator": "^2.0"
         
     },
     "require-dev": {

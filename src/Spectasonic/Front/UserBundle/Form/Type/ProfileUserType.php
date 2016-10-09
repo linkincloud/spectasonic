@@ -5,11 +5,19 @@ namespace Spectasonic\Front\UserBundle\Form\Type;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use FOS\UserBundle\Form\Type\ProfileFormType;
+use FM\ElfinderBundle\Form\Type\ElFinderType;
+use Spectasonic\Back\UserManagerBundle\Form\VendorType;
 
 class ProfileUserType extends ProfileFormType {
 
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
+                ->add('society', 'text', array(
+                    'label' => 'profile.fields.society',
+                    'translation_domain' => 'forms',
+                    'required' => false
+                ))
+                ->add('more', new VendorType())               
                 ->add('gender', 'choice', array(
                     'label' => 'profile.fields.gender',
                     'translation_domain' => 'forms',

@@ -6,6 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Spectasonic\Back\ShopManagerBundle\Entity\User_contract;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Spectasonic\Back\UserManagerBundle\Entity\Vendor;
 
 /**
  * @ORM\Entity
@@ -40,6 +42,12 @@ class User extends BaseUser
      */
     protected $groups;
     
+    /**
+     * @Gedmo\Slug(fields={"society"})
+     * @ORM\Column(name="society", type="string", length=255, unique=true, nullable=true)
+     */
+    protected $society;
+
     /**
      * @var
      *
@@ -88,7 +96,14 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Spectasonic\Back\ShopManagerBundle\Entity\User_contract", mappedBy="user")
      */
     protected $usercontract;
-       
+      
+    /**
+     *
+     * @ORM\OneToOne(targetEntity="Spectasonic\Back\UserManagerBundle\Entity\Vendor", cascade={"persist", "remove"})
+     */
+    protected  $more;
+
+
     /**
      * Constructor
      */
@@ -267,5 +282,53 @@ class User extends BaseUser
     public function getUserDisplay()
     {
         return $this->user_display;
+    }
+
+    /**
+     * Set society
+     *
+     * @param string $society
+     *
+     * @return User
+     */
+    public function setSociety($society)
+    {
+        $this->society = $society;
+
+        return $this;
+    }
+
+    /**
+     * Get society
+     *
+     * @return string
+     */
+    public function getSociety()
+    {
+        return $this->society;
+    }
+
+    /**
+     * Set more
+     *
+     * @param Vendor $more
+     *
+     * @return User
+     */
+    public function setMore(Vendor $more = null)
+    {
+        $this->more = $more;
+
+        return $this;
+    }
+
+    /**
+     * Get more
+     *
+     * @return Vendor
+     */
+    public function getMore()
+    {
+        return $this->more;
     }
 }

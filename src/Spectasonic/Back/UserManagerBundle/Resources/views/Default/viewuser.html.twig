@@ -26,6 +26,10 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#user" data-toggle="tab">User</a>
                                 </li>
+                                {% if 'ROLE_VENDEUR' in user.roles %}
+                                    <li><a href="#vendor" data-toggle="tab">Vendor Informations</a>
+                                    </li>                                        
+                                {% endif %}
                                 <li><a href="#billing" data-toggle="tab">Billing Address</a>
                                 </li>
                                 <li><a href="#shipping" data-toggle="tab">Shipping Address</a>
@@ -74,6 +78,28 @@
                                     </ul>
                                     <a class="btn btn-block btn-warning" href="{{ path('spectasonic_back_user_manager_edit_user', {'id': user.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit User</a>
                                 </div>
+                                {% if 'ROLE_VENDEUR' in user.roles %}
+                                    <div class="tab-pane fade" id="vendor">
+                                        <h4>Informations Vendor</h4>
+                                        {% if user.more is not null %}
+                                            {% if user.more.mainimage is defined %}
+                                                <p><img width="25%"
+                                                     src="{{ asset(user.more.mainimage) }}"
+                                                     alt=""
+                                                     /></p>
+                                                <p>{{ user.more.description | raw }}</p>
+                                            {% endif %}
+                                        {% else %}
+                                            <p>You must fill informations vendor. If vendor hasn't information, vendor will not display for customers !</p>
+                                        {% endif %}    
+
+                                        {% if user.more is not null %}
+                                            <a class="btn btn-block btn-warning" href="{{ path('spectasonic_back_user_manager_edit_user', {'id':user.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i> Edit informations vendor</a>
+                                        {% else %}
+                                            <a class="btn btn-block btn-success" href="{{ path('spectasonic_back_user_manager_add_information_vendor', {'id': user.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i> Add informations vendor</a>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
                                 <div class="tab-pane fade" id="billing">
                                     <h4>Billing Address</h4>
                                     {% if user.address[0] is defined %}

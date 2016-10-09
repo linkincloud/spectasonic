@@ -1,0 +1,42 @@
+back_manager_country:
+    path:  /
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:index" }
+
+back_manager_country_show:
+    path:  /{id}/show
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:show" }
+
+back_manager_country_new:
+    path:  /new
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:new" }
+
+back_manager_country_create:
+    path:  /create
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:create" }
+    requirements: { _method: post }
+
+back_manager_country_edit:
+    path:  /{id}/edit
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:edit" }
+
+back_manager_country_update:
+    path:  /{id}/update
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:update" }
+    requirements: { _method: post|put }
+
+back_manager_country_delete:
+    path:  /{id}/delete
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:delete" }
+    requirements: { _method: post|delete }
+    
+back_manager_country_by_id_delete:
+    path:  /delete/{id}
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:deleteById" }
+    requirements: { _method: get }
+    
+
+back_manager_country_bulk_action:
+    path:  /bulk-action
+    defaults: { _controller: "SpectasonicBackUserManagerBundle:Country:bulk" }
+    requirements: { _method: post }
+    

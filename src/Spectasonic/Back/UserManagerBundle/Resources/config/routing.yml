@@ -1,3 +1,11 @@
+spectasonic_back_user_manager_continent:
+    resource: "@SpectasonicBackUserManagerBundle/Resources/config/routing/continent.yml"
+    prefix:   /manager/continent
+
+spectasonic_back_user_manager_country:
+    resource: "@SpectasonicBackUserManagerBundle/Resources/config/routing/country.yml"
+    prefix:   /manager/country
+
 spectasonic_back_user_manager_homepage:
     path:     /manager
     defaults: { _controller: SpectasonicBackUserManagerBundle:Default:index }
@@ -18,7 +26,15 @@ spectasonic_back_user_manager_add_user:
     path:     /manager/add/user
     defaults: { _controller: SpectasonicBackUserManagerBundle:Default:adduser }
 
+spectasonic_back_user_manager_add_vendor:
+    path:     /manager/add/vendor
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Default:addvendor }
 
+spectasonic_back_user_manager_add_information_vendor:
+    path:     /manager/add/vendor/{id}/informations
+    defaults: { _controller: SpectasonicBackUserManagerBundle:Vendor:addinformationsvendor }
+    requirements:
+        id: \d+
 
 spectasonic_back_user_manager_add_address_user:
     path:     /manager/add/user/{id}/address/{type}
