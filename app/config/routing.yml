@@ -1,54 +1,87 @@
+root:
+    pattern: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:urlRedirect
+        path: /%locale%/
+        permanent: true
+
 elfinder:
     resource: "@FMElfinderBundle/Resources/config/routing.yml"
 
 spectasonic_back_shop_manager:
     resource: "@SpectasonicBackShopManagerBundle/Resources/config/routing.yml"
-    prefix:   /back
+    prefix:   /{_locale}/back
+    requirements:
+        _locale: en|fr
 
 spectasonic_back_gestion_contact:
     resource: "@SpectasonicBackGestionContactBundle/Resources/config/routing.yml"
-    prefix:   /back
+    prefix:   /{_locale}/back
+    requirements:
+        _locale: en|fr
 
 spectasonic_back_user_manager:
     resource: "@SpectasonicBackUserManagerBundle/Resources/config/routing.yml"
-    prefix:   /back
+    prefix:   /{_locale}/back
+    requirements:
+        _locale: en|fr
 
 spectasonic_back_support:
     resource: "@SpectasonicBackSupportBundle/Resources/config/routing.yml"
-    prefix:   /back
+    prefix:   /{_locale}/back
+    requirements:
+        _locale: en|fr
 
 spectasonic_back_remote:
     resource: "@SpectasonicBackRemoteBundle/Resources/config/routing.yml"
-    prefix:   /back
+    prefix:   /{_locale}/back
+    requirements:
+        _locale: en|fr
 
 spectasonic_back_blog:
     resource: "@SpectasonicBackBlogBundle/Resources/config/routing.yml"
-    prefix:   /back
+    prefix:   /{_locale}/back
+    requirements:
+        _locale: en|fr
 
 spectasonic_back_core:
     resource: "@SpectasonicBackCoreBundle/Resources/config/routing.yml"
-    prefix:   /back
+    prefix:   /{_locale}/back
+    requirements:
+        _locale: en|fr
 
 spectasonic_front_forum:
     resource: "@SpectasonicFrontForumBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 spectasonic_front_user:
     resource: "@SpectasonicFrontUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 spectasonic_front_shop:
     resource: "@SpectasonicFrontShopBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 spectasonic_front_contact:
     resource: "@SpectasonicFrontContactBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
     
 spectasonic_front_news:
     resource: "@SpectasonicFrontNewsBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr
 
 spectasonic_front_core:
     resource: "@SpectasonicFrontCoreBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /{_locale}/
+    requirements:
+        _locale: en|fr

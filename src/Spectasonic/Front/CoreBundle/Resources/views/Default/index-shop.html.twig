@@ -1,7 +1,7 @@
 {% for product in listProducts %}
     <div class="element clearfix rectangle col1-1 home teaser">
         <div class="padding-wrapper">
-            <a href="{{ path('spectasonic_front_shop_view_product', {'category': product.category.slug, 'slug': product.slug}) }}" title="{{ product.name }}">
+            <a href="{{ path('spectasonic_front_shop_view_product', {'category': product.category.slug, 'slug': product.slug}) }}.html" title="{{ product.name }}">
                 <figure class="images">
                     {% if product.mainimage is defined %}
                         <img
@@ -13,9 +13,9 @@
             </a>
             <div class="grey-bg">
                 <p class="small">
-                    <a href="{{ path('spectasonic_front_shop_view_all_posts', {'category': product.category.slug, 'slug': product.slug}) }}" title="{{ product.name}}">{{ product.category.name }}</a>
+                    <a href="{{ path('spectasonic_front_shop_view_by_category', {'category': product.category.slug }) }}.html" title="See All {{ product.category.name}}">{{ product.category.name }}</a>
                 </p>
-                <a href="{{ path('spectasonic_front_shop_view_product', {'category': product.category.slug , 'slug': product.slug}) }}" title="{{ product.name }}">
+                <a href="{{ path('spectasonic_front_shop_view_product', {'category': product.category.slug , 'slug': product.slug}) }}.html" title="{{ product.name }}">
                     <h4 class="header">{{ product.name }}</h4>
                 </a>
                 <a href="#" title="By Spectasonic Product">

@@ -15,7 +15,7 @@
             
             {% for post in listPosts %}
                 <div class="element  clearfix rectangle col1-1 home teaser">
-                    <div class="padding-wrapper"> <a href="{{ path('spectasonic_front_news_view_all_posts', {'category': post.categories[0].slug | lower, 'slug': post.slug}) }}.html" title="{{ post.title }}">
+                    <div class="padding-wrapper"> <a href="{{ path('spectasonic_front_news_view_post', {'category': post.categories[0].slug, 'slug': post.slug}) }}.html" title="{{ post.title }}">
                             <figure class="images">
                                 {% if post.mainimage is defined %}
                                     <img
@@ -26,8 +26,8 @@
                             </figure>
                         </a>
                         <div class="grey-bg">
-                            <p class="small"><a href="{{ path('spectasonic_front_news_view_by_category', {'category': post.categories[0].name | lower } ) }}.html" title="See other posts">{{ post.categories[0].name }}</a></p>
-                            <a href="{{ path('spectasonic_front_news_view_all_posts', {'category': post.categories[0].name, 'slug': post.slug}) }}" title="{{ post.title }}">
+                            <p class="small"><a href="{{ path('spectasonic_front_news_view_by_category', {'category': post.categories[0].slug }) }}.html" title="See All {{ post.categories[0].name }}">{{ post.categories[0].name }}</a></p>
+                            <a href="{{ path('spectasonic_front_news_view_post', {'category': post.categories[0].slug, 'slug': post.slug}) }}.html" title="{{ post.title }}">
                                 <h4 class="header">{{ post.title }}</h4>
                             </a>
                             <a href="#" title="">

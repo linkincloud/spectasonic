@@ -1,3 +1,15 @@
 spectasonic_front_core_homepage:
     path:     /
     defaults: { _controller: SpectasonicFrontCoreBundle:Default:index }
+
+spectasonic_front_core_select_lang:
+    path:    /select_lang/{_langue}
+    defaults: 
+        _controller: SpectasonicFrontCoreBundle:Default:selectLang
+        _langue: fr
+    requirements:
+        _langue: en|fr
+        
+        
+        
+        

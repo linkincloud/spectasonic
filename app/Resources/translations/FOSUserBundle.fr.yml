@@ -33,3 +33,9 @@ registration:
         message:  |
             <p>Pour valider votre compte utilisateur, merci de vous rendre sur :</p>
             <p><a href="%confirmationUrl%">%confirmationUrl%</a></p>
+            
+core:
+    index:
+        title_page:       Accueil
+        welcome:          Bienvenue
+        description:      Spectasonic is in the future !

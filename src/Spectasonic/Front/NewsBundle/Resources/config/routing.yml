@@ -17,8 +17,7 @@ spectasonic_front_news_view_post:
         _controller: SpectasonicFrontNewsBundle:Default:view
         format:      html
     requirements:
-        format:      html
-        category:    "services|values"
+        format:      html       
         
         
 spectasonic_front_news_view_all_posts:
