@@ -13,6 +13,7 @@ use Spectasonic\Back\CoreBundle\Entity\Slider;
 use Spectasonic\Back\CoreBundle\Form\SliderType;
 
 use Spectasonic\Back\CoreBundle\Form\SliderFilterType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Slider controller.
@@ -26,6 +27,11 @@ class SliderController extends Controller
      */
     public function indexAction(Request $request)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         //$em = $this->getDoctrine()->getManager();
         //$queryBuilder = $em->getRepository('SpectasonicBackCoreBundle:Slider')->createQueryBuilder('e');
         
@@ -125,6 +131,11 @@ class SliderController extends Controller
      */
     public function newAction(Request $request)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
     
         $slider = new Slider();
         $form   = $this->createForm(new SliderType(), $slider);
@@ -152,6 +163,11 @@ class SliderController extends Controller
      */
     public function showAction(Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($slider);
         return $this->render('SpectasonicBackCoreBundle:Slider:show.html.twig', array(
             'slider' => $slider,
@@ -167,6 +183,11 @@ class SliderController extends Controller
      */
     public function editAction(Request $request, Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($slider);
         $editForm = $this->createForm(new SliderType(), $slider);
         $editForm->handleRequest($request);
@@ -194,6 +215,11 @@ class SliderController extends Controller
      */
     public function deleteAction(Request $request, Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
     
         $form = $this->createDeleteForm($slider);
         $form->handleRequest($request);
@@ -219,6 +245,11 @@ class SliderController extends Controller
      */
     private function createDeleteForm(Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('spectasonic_back_configuration_homepage_slider_delete', array('id' => $slider->getId())))
             ->setMethod('DELETE')
@@ -232,6 +263,11 @@ class SliderController extends Controller
      * @param mixed $id The entity id
      */
     public function deleteByIdAction(Slider $slider){
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $em = $this->getDoctrine()->getManager();
         
         try {

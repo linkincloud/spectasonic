@@ -15,6 +15,7 @@ use Spectasonic\Back\BlogBundle\Entity\Slider;
 use Spectasonic\Back\BlogBundle\Form\SliderType;
 
 use Spectasonic\Back\BlogBundle\Form\SliderFilterType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Slider controller.
@@ -28,6 +29,20 @@ class BlogSliderController extends Controller
      */
     public function indexAction(Request $request)
     {
+        /* Sécurité */
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_EDITEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux vendeurs');
+        }
+        /* Ne pas oublier d'optimiser l'expérience utilisateur dans la vue
+        * Affichage uniquement les boutons Actions selon le ROLE et l'appartenance
+        *
+        * Fin de la sécurité
+        **/
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('SpectasonicBackBlogBundle:Slider')->createQueryBuilder('e');
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
@@ -119,6 +134,17 @@ class BlogSliderController extends Controller
      */
     public function newAction(Request $request)
     {
+        /* Sécurité */
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_EDITEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux editeurs');
+        }
+        /* 
+        * Fin de la sécurité
+        **/
     
         $slider = new Slider();
         $form   = $this->createForm(new SliderType(), $slider);
@@ -146,6 +172,11 @@ class BlogSliderController extends Controller
      */
     public function showAction(Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($slider);
         
        
@@ -166,6 +197,11 @@ class BlogSliderController extends Controller
      */
     public function editAction(Request $request, Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($slider);
         $editForm = $this->createForm(new SliderType(), $slider);
         $editForm->handleRequest($request);
@@ -193,6 +229,11 @@ class BlogSliderController extends Controller
      */
     public function deleteAction(Request $request, Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
     
         $form = $this->createDeleteForm($slider);
         $form->handleRequest($request);
@@ -215,6 +256,11 @@ class BlogSliderController extends Controller
      */
     private function createDeleteForm(Slider $slider)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('spectasonic_back_blog_sliders_delete', array('id' => $slider->getId())))
             ->setMethod('DELETE')
@@ -230,7 +276,11 @@ class BlogSliderController extends Controller
      * @Method("GET")
      */
     public function deleteById($id){
-
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $em = $this->getDoctrine()->getManager();
         $slider = $em->getRepository('SpectasonicBackBlogBundle:Slider')->find($id);
         

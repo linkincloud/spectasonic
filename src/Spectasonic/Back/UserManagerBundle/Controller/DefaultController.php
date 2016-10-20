@@ -11,6 +11,8 @@ use Spectasonic\Front\UserBundle\Form\Type\ProfileUserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class DefaultController extends Controller {
 
@@ -19,6 +21,12 @@ class DefaultController extends Controller {
      * @return array listUsers
      */
     public function indexAction() {
+		if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+		
         //$repository = $this->getDoctrine()->getManager()->getRepository('SpectasonicFrontUserBundle:User');
         //$listUsers = $repository->findAll();
 
@@ -33,8 +41,14 @@ class DefaultController extends Controller {
     }
 
     public function viewUserAction($id) {
-        //$repository = $this->getDoctrine()->getManager()->getRepository('SpectasonicFrontUserBundle:User');
+if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }    
+    //$repository = $this->getDoctrine()->getManager()->getRepository('SpectasonicFrontUserBundle:User');
         //$user = $repository->getOneUser($id);
+	
 
         $user = $this
                 ->getDoctrine()
@@ -50,6 +64,11 @@ class DefaultController extends Controller {
     }
 
     public function editUserAction(Request $request, $id) {
+		if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $user = $this
                 ->getDoctrine()
                 ->getManager()
@@ -86,6 +105,11 @@ class DefaultController extends Controller {
     }
 
     public function addUserAction(Request $request) {
+		if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $user = new User();
 
         $form = $this->createForm(new AddUserType($user), $user);
@@ -108,6 +132,11 @@ class DefaultController extends Controller {
     }
 
     public function editAddressAction(Request $request, $addressId, $userId) {
+		if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $user = $this
                 ->getDoctrine()
                 ->getManager()
@@ -145,6 +174,11 @@ class DefaultController extends Controller {
 
     
     public function addAddressAction(Request $request, $id, $type) {
+		if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $user = $this
                 ->getDoctrine()
                 ->getManager()
@@ -180,6 +214,11 @@ class DefaultController extends Controller {
     }
     
     public function addBillingAddressAction(Request $request, $id) {
+		if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $user = $this
                 ->getDoctrine()
                 ->getManager()
@@ -221,6 +260,11 @@ class DefaultController extends Controller {
      * Et récupérer dans le request
      */
     public function addShippingAddressAction(Request $request, $id) {
+		if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $user = $this
                 ->getDoctrine()
                 ->getManager()
@@ -295,3 +339,4 @@ class DefaultController extends Controller {
     }*/
 
 }
+

@@ -13,6 +13,7 @@ use Spectasonic\Back\ShopManagerBundle\Entity\Contract;
 use Spectasonic\Back\ShopManagerBundle\Form\ContractType;
 
 use Spectasonic\Back\ShopManagerBundle\Form\ContractFilterType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Contract controller.
@@ -24,8 +25,16 @@ class ContractController extends Controller
      * Lists all Contract entities.
      *
      */
-    public function indexAction(Request $request)
+
+    public function indexAction(Request $request )
     {
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_VENDEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux vendeurs');
+        }
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('SpectasonicBackShopManagerBundle:Contract')->createQueryBuilder('e');
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
@@ -114,10 +123,22 @@ class ContractController extends Controller
 
     /**
      * Displays a form to create a new Contract entity.
-     *
      */
     public function newAction(Request $request)
     {
+        /*
+          * Sécurité
+          */
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_VENDEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux vendeurs');
+        }
+        /*
+         * Fin de la sécurité
+         */
     
         $contract = new Contract();
         $form   = $this->createForm(new ContractType(), $contract);
@@ -141,10 +162,30 @@ class ContractController extends Controller
     
     /**
      * Finds and displays a Contract entity.
-     *
      */
     public function showAction(Contract $contract)
     {
+        /*
+         * Sécurité
+         */
+        if (
+            (
+                ( $this->get('security.token_storage')->getToken()->getUser()->getId() === $contract->getAuthor()->getId() )
+                AND
+                ($this->container->get('security.authorization_checker')->isGranted('ROLE_VENDEUR'))
+            )
+            OR
+            ( $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        ) {
+            /* On ne fait rien
+            */
+        }else{
+            throw new AccessDeniedException('Vous ne pouvez pas accèder à cette page');
+        }
+        /*
+         * Fin de la sécurité
+         */
+
         $deleteForm = $this->createDeleteForm($contract);
         return $this->render('SpectasonicBackShopManagerBundle:Contract:show.html.twig', array(
             'contract' => $contract,
@@ -160,6 +201,11 @@ class ContractController extends Controller
      */
     public function editAction(Request $request, Contract $contract)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($contract);
         $editForm = $this->createForm(new ContractType(), $contract);
         $editForm->handleRequest($request);
@@ -187,6 +233,11 @@ class ContractController extends Controller
      */
     public function deleteAction(Request $request, Contract $contract)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
     
         $form = $this->createDeleteForm($contract);
         $form->handleRequest($request);
@@ -225,6 +276,11 @@ class ContractController extends Controller
      * @param mixed $id The entity id
      */
     public function deleteByIdAction($id){
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $em = $this->getDoctrine()->getManager();
         $contract = $em->getRepository('SpectasonicBackShopManagerBundle:Contract')->find($id);
         

@@ -13,6 +13,8 @@ use Spectasonic\Back\BlogBundle\Entity\Blog;
 use Spectasonic\Back\BlogBundle\Form\BlogType;
 
 use Spectasonic\Back\BlogBundle\Form\BlogFilterType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Blog controller.
@@ -20,14 +22,25 @@ use Spectasonic\Back\BlogBundle\Form\BlogFilterType;
  */
 class BlogController extends Controller
 {
-    /**
-     * Lists all Blog entities.
-     *
-     */
     public function indexAction(Request $request)
     {
+        /* Sécurité */
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_EDITEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux vendeurs');
+        }
+        /* Ne pas oublier d'optimiser l'expérience utilisateur dans la vue
+        * Affichage uniquement les boutons Actions selon le ROLE et l'appartenance
+        *
+        * Fin de la sécurité
+        **/
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('SpectasonicBackBlogBundle:Blog')->createQueryBuilder('e');
+
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
 
         list($blogs, $pagerHtml) = $this->paginator($queryBuilder, $request);
@@ -118,7 +131,20 @@ class BlogController extends Controller
      */
     public function newAction(Request $request)
     {
-    
+        /*
+         * Sécurité
+         */
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_EDITEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux editeurs');
+        }
+        /*
+         * Fin de la sécurité
+         */
+
         $blog = new Blog();
         $form   = $this->createForm(new BlogType(), $blog);
         $form->handleRequest($request);
@@ -141,10 +167,30 @@ class BlogController extends Controller
     
     /**
      * Finds and displays a Blog entity.
-     *
      */
     public function showAction(Blog $blog)
     {
+        /*
+         * Sécurité
+         */
+        if (
+            (
+                ( $this->get('security.token_storage')->getToken()->getUser()->getId() === $blog->getAuthor()->getId() )
+                AND
+                ($this->container->get('security.authorization_checker')->isGranted('ROLE_EDITEUR'))
+            )
+            OR
+            ( $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        ) {
+            /* On ne fait rien
+            */
+        }else{
+            throw new AccessDeniedException('Vous ne pouvez pas accèder à cette page');
+        }
+        /*
+         * Fin de la sécurité
+         */
+
         $deleteForm = $this->createDeleteForm($blog);
         return $this->render('SpectasonicBackBlogBundle:Blog:show.html.twig', array(
             'blog' => $blog,
@@ -160,6 +206,23 @@ class BlogController extends Controller
      */
     public function editAction(Request $request, Blog $blog)
     {
+        /* Sécurité */
+        if (
+            (
+                ( $this->get('security.token_storage')->getToken()->getUser()->getId() === $blog->getAuthor()->getId() )
+                AND
+                ($this->container->get('security.authorization_checker')->isGranted('ROLE_EDITEUR'))
+            )
+            OR
+            ( $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        ) {
+            /* On ne fait rien
+            */
+        }else{
+            throw new AccessDeniedException('Vous ne pouvez pas accèder à cette page');
+        }
+        /* Fin de la sécurité */
+
         $deleteForm = $this->createDeleteForm($blog);
         $editForm = $this->createForm(new BlogType(), $blog);
         $editForm->handleRequest($request);
@@ -185,9 +248,24 @@ class BlogController extends Controller
      * Deletes a Blog entity.
      *
      */
+
     public function deleteAction(Request $request, Blog $blog)
     {
-    
+        /* Début de la sécurité */
+        if (
+            (
+                ( $this->get('security.token_storage')->getToken()->getUser()->getId() === $blog->getAuthor()->getId() )
+                AND
+                ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+            )
+        ) {
+            /* On ne fait rien
+            */
+        }else{
+            throw new AccessDeniedException('Vous ne pouvez pas accèder à cette page');
+        }
+        /* Fin de la sécurité */
+
         $form = $this->createDeleteForm($blog);
         $form->handleRequest($request);
 
@@ -212,6 +290,21 @@ class BlogController extends Controller
      */
     private function createDeleteForm(Blog $blog)
     {
+        /* Sécurité */
+        if (
+        (
+            ( $this->get('security.token_storage')->getToken()->getUser()->getId() === $blog->getAuthor()->getId() )
+            AND
+            ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        )
+        ) {
+            /* On ne fait rien
+            */
+        }else{
+            throw new AccessDeniedException('Vous ne pouvez pas accèder à cette page');
+        }
+        /* Fin de la sécurité */
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('back_blog_delete', array('id' => $blog->getId())))
             ->setMethod('DELETE')
@@ -221,18 +314,32 @@ class BlogController extends Controller
     
     /**
      * Delete Blog by id
-     *
      * @param mixed $id The entity id
+     * @Security("has_role('ROLE_ADMIN') ")
      */
     public function deleteById($id){
-
         $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository('SpectasonicBackBlogBundle:Blog')->find($id);
-        
+
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find Blog entity.');
         }
-        
+
+        /* Sécurité */
+        if (
+        (
+            ( $this->get('security.token_storage')->getToken()->getUser()->getId() === $blog->getAuthor()->getId() )
+            AND
+            ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+        )
+        ) {
+            /* On ne fait rien
+            */
+        }else{
+            throw new AccessDeniedException('Vous ne pouvez pas accèder à cette page');
+        }
+        /* Fin de la sécurité */
+
         try {
             $em->remove($blog);
             $em->flush();
@@ -262,11 +369,26 @@ class BlogController extends Controller
 
                 foreach ($ids as $id) {
                     $blog = $repository->find($id);
-                    $em->remove($blog);
-                    $em->flush();
-                }
 
-                $this->get('session')->getFlashBag()->add('success', 'blogs was deleted successfully!');
+                    /* Sécurité */
+                    if (
+                    (
+                        ( $this->get('security.token_storage')->getToken()->getUser()->getId() === $blog->getAuthor()->getId() )
+                        AND
+                        ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN'))
+                    )
+                    ) {
+                        $em->remove($blog);
+                        $em->flush();
+
+                        $this->get('session')->getFlashBag()->add('success', 'blogs was deleted successfully!');
+
+                    }else{
+                        // Ici on ne fait rien
+                        // new AccessDeniedException('Vous ne pouvez pas accèder à cette page');
+                    }
+                    /* Fin de la sécurité */
+                }
 
             } catch (Exception $ex) {
                 $this->get('session')->getFlashBag()->add('error', 'Problem with deletion of the blogs ');

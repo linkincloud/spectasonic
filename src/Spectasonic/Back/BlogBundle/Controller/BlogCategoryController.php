@@ -13,6 +13,7 @@ use Spectasonic\Back\BlogBundle\Entity\BlogCategory;
 use Spectasonic\Back\BlogBundle\Form\BlogCategoryType;
 
 use Spectasonic\Back\BlogBundle\Form\BlogCategoryFilterType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * BlogCategory controller.
@@ -26,6 +27,17 @@ class BlogCategoryController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+        /* Sécurité */
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_EDITEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux editeurs');
+        }
+        /* Fin de la sécurité */
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('SpectasonicBackBlogBundle:BlogCategory')->createQueryBuilder('e');
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
@@ -118,6 +130,14 @@ class BlogCategoryController extends Controller
      */
     public function newAction(Request $request)
     {
+
+        /* Sécurité */
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+        /* Fin de la sécurité */
     
         $blogCategory = new BlogCategory();
         $form   = $this->createForm(new BlogCategoryType(), $blogCategory);
@@ -145,14 +165,24 @@ class BlogCategoryController extends Controller
      */
     public function showAction(BlogCategory $blogCategory)
     {
+        /* Sécurité */
+        if (($this->get('security.context')->isGranted('ROLE_ADMIN'))
+            OR
+            ($this->get('security.context')->isGranted('ROLE_EDITEUR'))) {
+        }else{
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins et aux editeurs');
+        }
+        /* Fin de la sécurité */
+
         $deleteForm = $this->createDeleteForm($blogCategory);
         return $this->render('SpectasonicBackBlogBundle:Category:show.html.twig', array(
             'blogCategory' => $blogCategory,
             'delete_form' => $deleteForm->createView(),
         ));
     }
-    
-    
+
+
 
     /**
      * Displays a form to edit an existing BlogCategory entity.
@@ -160,6 +190,14 @@ class BlogCategoryController extends Controller
      */
     public function editAction(Request $request, BlogCategory $blogCategory)
     {
+        /* Sécurité */
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+        /* Fin de la sécurité */
+
         $deleteForm = $this->createDeleteForm($blogCategory);
         $editForm = $this->createForm(new BlogCategoryType(), $blogCategory);
         $editForm->handleRequest($request);
@@ -187,7 +225,15 @@ class BlogCategoryController extends Controller
      */
     public function deleteAction(Request $request, BlogCategory $blogCategory)
     {
-    
+
+        /* Sécurité */
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+        /* Fin de la sécurité */
+
         $form = $this->createDeleteForm($blogCategory);
         $form->handleRequest($request);
 
@@ -212,6 +258,14 @@ class BlogCategoryController extends Controller
      */
     private function createDeleteForm(BlogCategory $blogCategory)
     {
+        /* Sécurité */
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+        /* Fin de la sécurité */
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('spectasonic_back_blog_category_delete', array('id' => $blogCategory->getId())))
             ->setMethod('DELETE')
@@ -225,14 +279,21 @@ class BlogCategoryController extends Controller
      * @param mixed $id The entity id
      */
     public function deleteById($id){
-
         $em = $this->getDoctrine()->getManager();
         $blogCategory = $em->getRepository('SpectasonicBackBlogBundle:BlogCategory')->find($id);
-        
+
         if (!$blogCategory) {
             throw $this->createNotFoundException('Unable to find BlogCategory entity.');
         }
-        
+
+        /* Sécurité */
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+        /* Fin de la sécurité */
+
         try {
             $em->remove($blogCategory);
             $em->flush();
@@ -252,6 +313,14 @@ class BlogCategoryController extends Controller
     */
     public function bulkAction(Request $request)
     {
+        /* Sécurité */
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+        /* Fin de la scurité */
+
         $ids = $request->get("ids", array());
         $action = $request->get("bulk_action", "delete");
 

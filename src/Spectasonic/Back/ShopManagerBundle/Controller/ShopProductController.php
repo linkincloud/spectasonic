@@ -13,6 +13,7 @@ use Spectasonic\Back\ShopManagerBundle\Entity\ShopProduct;
 use Spectasonic\Back\ShopManagerBundle\Form\ShopProductType;
 
 use Spectasonic\Back\ShopManagerBundle\Form\ShopProductFilterType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * ShopProduct controller.
@@ -26,6 +27,13 @@ class ShopProductController extends Controller
      */
     public function indexAction(Request $request)
     {
+
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $queryBuilder = $em->getRepository('SpectasonicBackShopManagerBundle:ShopProduct')->createQueryBuilder('e');
         list($filterForm, $queryBuilder) = $this->filter($queryBuilder, $request);
@@ -118,6 +126,11 @@ class ShopProductController extends Controller
      */
     public function newAction(Request $request)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
     
         $shopProduct = new ShopProduct();
         $form   = $this->createForm(new ShopProductType(), $shopProduct);
@@ -146,6 +159,11 @@ class ShopProductController extends Controller
      */
     public function showAction(ShopProduct $shopProduct)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($shopProduct);
         return $this->render('SpectasonicBackShopManagerBundle:Product:show.html.twig', array(
             'shopProduct' => $shopProduct,
@@ -161,6 +179,11 @@ class ShopProductController extends Controller
      */
     public function editAction(Request $request, ShopProduct $shopProduct)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($shopProduct);
         $editForm = $this->createForm(new ShopProductType(), $shopProduct);
         $editForm->handleRequest($request);
@@ -188,6 +211,11 @@ class ShopProductController extends Controller
      */
     public function deleteAction(Request $request, ShopProduct $shopProduct)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
     
         $form = $this->createDeleteForm($shopProduct);
         $form->handleRequest($request);
@@ -213,6 +241,11 @@ class ShopProductController extends Controller
      */
     private function createDeleteForm(ShopProduct $shopProduct)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('spectasonic_back_shop_manager_delete_product', array('id' => $shopProduct->getId())))
             ->setMethod('DELETE')
@@ -226,7 +259,11 @@ class ShopProductController extends Controller
      * @param mixed $id The entity id
      */
     public function deleteById($id){
-
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $em = $this->getDoctrine()->getManager();
         $shopProduct = $em->getRepository('SpectasonicBackShopManagerBundle:ShopProduct')->find($id);
         

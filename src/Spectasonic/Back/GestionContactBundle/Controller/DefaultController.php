@@ -5,16 +5,24 @@ namespace Spectasonic\Back\GestionContactBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class DefaultController extends Controller {
 
     /**
      * lister tous les utilisateurs sans paramètre
      * @return array listUsers
+     *
      */
+
     public function indexAction() {
-        //$repository = $this->getDoctrine()->getManager()->getRepository('SpectasonicFrontUserBundle:User');
-        //$listUsers = $repository->findAll();
+
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
 
         $repository = $this
                 ->getDoctrine()
@@ -30,8 +38,14 @@ class DefaultController extends Controller {
      * Afficher enquiry
      * @param type $id (enquiry)
      * @return object enquiry
+     *
      */
     public function viewAction($id) {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $enquiry = $this
                 ->getDoctrine()
                 ->getManager()
@@ -44,8 +58,14 @@ class DefaultController extends Controller {
 
         return $this->render('SpectasonicBackGestionContactBundle:Default:view.html.twig', array('enquiry' => $enquiry));
     }
-    
+
     public function deleteAction($id, Request $request) {
+
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $em = $this->getDoctrine()->getManager();
         $enquiry = $em->getRepository('SpectasonicFrontContactBundle:Enquiry')->find($id);
 

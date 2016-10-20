@@ -6,6 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Spectasonic\Back\ShopManagerBundle\Entity\ShopCategory;
 use Spectasonic\Back\ShopManagerBundle\Form\ShopCategoryType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * ShopCategory controller.
@@ -19,6 +20,11 @@ class ShopCategoryController extends Controller
      */
     public function indexAction()
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $em = $this->getDoctrine()->getManager();
 
         $shopCategories = $em->getRepository('SpectasonicBackShopManagerBundle:ShopCategory')->findAll();
@@ -35,6 +41,12 @@ class ShopCategoryController extends Controller
      */
     public function newAction(Request $request)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
+
         $shopCategory = new ShopCategory();
         $form = $this->createForm(new ShopCategoryType(), $shopCategory);
         $form->handleRequest($request);
@@ -60,6 +72,11 @@ class ShopCategoryController extends Controller
      */
     public function showAction(ShopCategory $shopCategory)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($shopCategory);
 
         return $this->render('SpectasonicBackShopManagerBundle:Category:show.html.twig', array(
@@ -75,6 +92,11 @@ class ShopCategoryController extends Controller
      */
     public function editAction(Request $request, ShopCategory $shopCategory)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $deleteForm = $this->createDeleteForm($shopCategory);
         $editForm = $this->createForm(new ShopCategoryType(), $shopCategory);
         $editForm->handleRequest($request);
@@ -99,6 +121,11 @@ class ShopCategoryController extends Controller
      */
     public function deleteAction(Request $request, ShopCategory $shopCategory)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         $form = $this->createDeleteForm($shopCategory);
         $form->handleRequest($request);
 
@@ -118,6 +145,11 @@ class ShopCategoryController extends Controller
      */
     private function createDeleteForm(ShopCategory $shopCategory)
     {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('spectasonic_back_shop_manager_delete_category', array('id' => $shopCategory->getId())))
             ->setMethod('DELETE')

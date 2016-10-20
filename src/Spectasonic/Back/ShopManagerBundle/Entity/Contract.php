@@ -5,6 +5,8 @@ namespace Spectasonic\Back\ShopManagerBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection; 
 use Spectasonic\Back\ShopManagerBundle\Entity\User_contract;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
@@ -12,6 +14,7 @@ use Spectasonic\Back\ShopManagerBundle\Entity\User_contract;
  *
  * @ORM\Table(name="contract")
  * @ORM\Entity(repositoryClass="Spectasonic\Back\ShopManagerBundle\Repository\ContractRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Contract
 {
@@ -30,6 +33,12 @@ class Contract
      * @ORM\Column(name="reference", type="string", length=255, unique=true)
      */
     private $reference;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Spectasonic\Front\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_contract", referencedColumnName="id")
+     */
+    private $author;
 
 
     /**
@@ -51,7 +60,20 @@ class Contract
     {
         return $this->id;
     }
-
+    /**
+     * @param string $author
+     * @return Contract
+     */
+    public function setAuthor($author) {
+        $this->author = $author;
+        return $this;
+    }
+    /**
+     * @return string
+     */
+    public function getAuthor() {
+        return $this->author;
+    }
     /**
      * Set reference
      *

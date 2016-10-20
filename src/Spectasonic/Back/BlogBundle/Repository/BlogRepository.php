@@ -10,6 +10,11 @@ class BlogRepository extends EntityRepository {
      * Pour le front uniquement 
      */
 
+    /*
+     * créer une méthode getAllPostsByEditorId
+     *
+     * */
+
     public function getAllPosts() {
 
         $qb = $this->createQueryBuilder('p');
@@ -140,4 +145,16 @@ class BlogRepository extends EntityRepository {
                         ->getResult();
     }
 
+    public function getAllPostByEditorId($id) {
+
+        $qb = $this->createQueryBuilder('m');
+
+        $qb
+            ->join('m.username', 'd')
+            ->addSelect('d')
+            ->where('m.id = :id')
+            ->setParameter('id', $id);
+
+        return $qb->getQuery()->getSingleResult();
+    }
 }

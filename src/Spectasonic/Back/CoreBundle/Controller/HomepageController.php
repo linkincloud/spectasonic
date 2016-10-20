@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Spectasonic\Back\CoreBundle\Entity\Homepage;
 use Spectasonic\Back\CoreBundle\Form\HomepageType;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Homepage controller.
@@ -19,6 +20,11 @@ class HomepageController extends Controller {
      *
      */
     public function editAction(Request $request) {
+        if (!$this->get('security.context')->isGranted('ROLE_ADMIN'))
+        {
+            // Sinon on déclenche une exception « Accès interdit »
+            throw new AccessDeniedException('Accès limité aux admins');
+        }
 
         $em = $this->getDoctrine()->getManager();
 
